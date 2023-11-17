@@ -1,3 +1,1 @@
-/build
-/lakefile.olean
-/lake-packages/*
+/.lake/
