@@ -3,7 +3,7 @@ Copyright (c) 2022 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
-import Mathlib.Tactic.Default
+import Mathlib.Tactic
 
 
 /-!
@@ -104,14 +104,14 @@ So if we write `P → Q → R` then we'd better know what this means.
 The convention in Lean is that it means `P → (Q → R)`. If you think
 about it, this means that to deduce `R` you will need to prove both `P`
 and `Q`. In general to prove `P1 → P2 → P3 → ... Pn` you can assume
-`P1`, `P2`,...,`P(n-1)` and then you have to prove `Pn`. 
+`P1`, `P2`,...,`P(n-1)` and then you have to prove `Pn`.
 
 So the next level is asking you prove that `P → (Q → P)`.
 
 -/
 example : P → Q → P := by sorry
 
-/-- If we know `P`, and we also know `P → Q`, we can deduce `Q`. 
+/-- If we know `P`, and we also know `P → Q`, we can deduce `Q`.
 This is called "Modus Ponens" by logicians. -/
 example : P → (P → Q) → Q := by sorry
 
@@ -123,7 +123,7 @@ example : (P → Q) → (Q → R) → P → R := by sorry
 -- two goals! Note that tactics operate on only the first goal.
 example : (P → Q → R) → (P → Q) → P → R := by sorry
 
-/- 
+/-
 
 Here are some harder puzzles. They won't teach you anything new about
 Lean, they're just trickier. If you're not into logic puzzles
@@ -148,4 +148,3 @@ example :
     (((P → Q → Q) → (P → Q) → Q) → R) →
       ((((P → P) → Q) → P → P → Q) → R) → (((P → P → Q) → (P → P) → Q) → R) → R :=
   by sorry
-
