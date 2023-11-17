@@ -15,3 +15,8 @@ TODO: set up codespaces and gitpod.
 ## Course notes
 
 TODO: port 2023 course notes [here](https://www.ma.imperial.ac.uk/~buzzard/xena/formalising-mathematics-2023/) (all in Lean 3) to Lean 4.
+
+## More TODOs
+
+Get Lean 4 code compiling.
+Add more on metric spaces, including how to use `choose` to get from "this point is in the closure" to "there exists a sequence tending to this point".
