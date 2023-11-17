@@ -5,7 +5,6 @@ Author : Kevin Buzzard
 -/
 import RepresentationTheory.Basic
 
-#align_import section20representation_theory.sheet1
 
 /-
 

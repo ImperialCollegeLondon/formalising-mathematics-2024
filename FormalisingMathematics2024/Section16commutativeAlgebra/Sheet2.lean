@@ -7,7 +7,6 @@ import Mathlib.Tactic.Default
 import RingTheory.Noetherian
 import RingTheory.Polynomial.Basic
 
-#align_import section16commutative_algebra.sheet2
 
 -- theory of Noetherian rings
 -- theory of Noetherian rings

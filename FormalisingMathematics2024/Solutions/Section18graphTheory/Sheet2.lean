@@ -6,7 +6,6 @@ Author : Kevin Buzzard
 import Mathlib.Tactic.Default
 import Combinatorics.SimpleGraph.Connectivity
 
-#align_import solutions.section18graph_theory.sheet2
 
 -- paths, cycles etc in graph theory
 -- paths, cycles etc in graph theory

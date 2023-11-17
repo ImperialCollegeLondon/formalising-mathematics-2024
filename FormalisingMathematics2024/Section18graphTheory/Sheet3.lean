@@ -6,7 +6,6 @@ Author : Kevin Buzzard
 import Mathlib.Tactic.Default
 import Combinatorics.SimpleGraph.Acyclic
 
-#align_import section18graph_theory.sheet3
 
 -- trees and forests
 -- trees and forests

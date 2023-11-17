@@ -7,7 +7,6 @@ import Mathlib.Tactic.Default
 import RingTheory.PrincipalIdealDomain
 import Data.Polynomial.FieldDivision
 
-#align_import section14UFDs_and_PIDs_etc.sheet1
 
 -- theory of PIDs
 -- theory of PIDs

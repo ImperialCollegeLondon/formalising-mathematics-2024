@@ -7,7 +7,6 @@ import Mathlib.Tactic.Default
 import Data.Real.Basic
 import Solutions.Section02reals.Sheet5
 
-#align_import section02reals.sheet6
 
 -- imports all the Lean tactics
 -- imports all the Lean tactics

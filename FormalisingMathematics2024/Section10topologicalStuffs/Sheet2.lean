@@ -7,7 +7,6 @@ import Mathlib.Tactic.Default
 import Topology.SubsetProperties
 import RingTheory.Int.Basic
 
-#align_import section10topological_stuffs.sheet2
 
 namespace Section10sheet2
 

@@ -6,7 +6,6 @@ Author : Kevin Buzzard
 import Mathlib.Tactic.Default
 import RingTheory.PrincipalIdealDomain
 
-#align_import solutions.section14UFDs_and_PIDs_etc.sheet1
 
 -- theory of PIDs
 -- theory of PIDs

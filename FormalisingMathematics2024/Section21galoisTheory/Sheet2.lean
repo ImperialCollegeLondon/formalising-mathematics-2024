@@ -7,7 +7,6 @@ import Algebra.Algebra.Tower
 import RingTheory.Norm
 import RingTheory.Trace
 
-#align_import section21galois_theory.sheet2
 
 -- for norms
 -- for norms

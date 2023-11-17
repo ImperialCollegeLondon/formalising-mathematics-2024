@@ -5,7 +5,6 @@ Author : Kevin Buzzard
 -/
 import FieldTheory.Galois
 
-#align_import solutions.section21galois_theory.sheet5
 
 /-
 

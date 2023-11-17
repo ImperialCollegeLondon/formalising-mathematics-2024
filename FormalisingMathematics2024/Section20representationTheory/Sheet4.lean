@@ -5,7 +5,6 @@ Author : Kevin Buzzard
 -/
 import RepresentationTheory.Rep
 
-#align_import section20representation_theory.sheet4
 
 -- representation theory via categories
 -- representation theory via categories

@@ -7,7 +7,6 @@ import FieldTheory.Separable
 import RingTheory.Trace
 import RingTheory.Norm
 
-#align_import solutions.section21galois_theory.sheet3
 
 /-
 

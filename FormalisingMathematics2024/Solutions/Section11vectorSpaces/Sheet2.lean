@@ -6,7 +6,6 @@ Author : Kevin Buzzard
 import Mathlib.Tactic.Default
 import LinearAlgebra.FiniteDimensional
 
-#align_import solutions.section11vector_spaces.sheet2
 
 /-!
 

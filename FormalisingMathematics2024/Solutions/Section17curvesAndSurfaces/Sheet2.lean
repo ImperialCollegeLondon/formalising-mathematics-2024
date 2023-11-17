@@ -8,7 +8,6 @@ import Data.Real.Basic
 import Analysis.Calculus.ParametricIntegral
 import Analysis.SpecialFunctions.ExpDeriv
 
-#align_import solutions.section17curves_and_surfaces.sheet2
 
 namespace Section17sheet2solutions
 

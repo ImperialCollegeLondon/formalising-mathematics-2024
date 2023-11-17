@@ -9,7 +9,6 @@ import RingTheory.PrincipalIdealDomain
 import Data.MvPolynomial.CommRing
 import RingTheory.Polynomial.Basic
 
-#align_import solutions.section14UFDs_and_PIDs_etc.sheet3
 
 -- UFDs
 -- UFDs

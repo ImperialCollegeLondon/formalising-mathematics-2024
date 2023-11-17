@@ -6,7 +6,6 @@ Author : Kevin Buzzard
 import Mathlib.Tactic.Default
 import MeasureTheory.MeasurableSpace
 
-#align_import solutions.section12measure_theory.sheet3
 
 -- imports all the Lean tactics
 -- imports all the Lean tactics

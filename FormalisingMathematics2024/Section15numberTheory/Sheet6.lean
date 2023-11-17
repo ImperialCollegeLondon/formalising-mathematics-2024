@@ -3,7 +3,6 @@ import Data.Zmod.Basic
 import FieldTheory.Finite.Basic
 import Data.Nat.PrimeNormNum
 
-#align_import section15number_theory.sheet6
 
 /-
 

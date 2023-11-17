@@ -7,7 +7,6 @@ import Data.Real.Basic
 import NumberTheory.NumberField.ClassNumber
 import Mathlib.Tactic.Default
 
-#align_import solutions.section19algebraic_number_theory.sheet2
 
 /-
 

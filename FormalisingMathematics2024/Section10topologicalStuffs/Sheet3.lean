@@ -7,7 +7,6 @@ import RingTheory.Ideal.Operations
 import Topology.Algebra.Polynomial
 import Topology.Bases
 
-#align_import section10topological_stuffs.sheet3
 
 namespace Section10sheet3
 

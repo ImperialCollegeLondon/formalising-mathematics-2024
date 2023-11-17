@@ -6,7 +6,6 @@ Author : Kevin Buzzard
 import Mathlib.Tactic.Default
 import Order.Filter.Basic
 
-#align_import solutions.section11_and_a_half_filters.sheet1
 
 /-!
 

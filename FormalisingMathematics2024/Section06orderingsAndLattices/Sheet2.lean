@@ -5,7 +5,6 @@ Author : Kevin Buzzard
 -/
 import Mathlib.Tactic.Default
 
-#align_import section06orderings_and_lattices.sheet2
 
 /-
 

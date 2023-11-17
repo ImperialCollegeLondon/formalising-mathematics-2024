@@ -6,7 +6,6 @@ Author : Kevin Buzzard
 import Mathlib.Tactic.Default
 import Order.Filter.Basic
 
-#align_import section11_and_a_half_filters.sheet3
 
 -- imports all the Lean tactics
 -- imports all the Lean tactics

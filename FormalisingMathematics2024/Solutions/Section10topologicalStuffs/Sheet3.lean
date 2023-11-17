@@ -7,7 +7,6 @@ import RingTheory.Ideal.Operations
 import Topology.Algebra.Polynomial
 import Topology.Bases
 
-#align_import solutions.section10topological_stuffs.sheet3
 
 /-!
 # Prime spectrum of a ring and its Zariski topology

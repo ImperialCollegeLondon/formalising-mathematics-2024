@@ -9,7 +9,6 @@ import FieldTheory.IsAlgClosed.Basic
 import RingTheory.Norm
 import RingTheory.Trace
 
-#align_import section21galois_theory.sheet1
 
 -- for `way_one`
 -- for `way_one`

@@ -7,7 +7,6 @@ import Mathlib.Tactic.Default
 import Data.Zmod.Algebra
 import NumberTheory.Wilson
 
-#align_import solutions.section15number_theory.sheet8
 
 open scoped BigOperators
 

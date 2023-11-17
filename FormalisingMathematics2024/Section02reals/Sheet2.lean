@@ -6,7 +6,6 @@ Author : Kevin Buzzard
 import Mathlib.Tactic.Default
 import Data.Real.Basic
 
-#align_import section02reals.sheet2
 
 /-!
 

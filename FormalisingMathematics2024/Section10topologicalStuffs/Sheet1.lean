@@ -7,7 +7,6 @@ import Topology.Bases
 import Topology.MetricSpace.Basic
 import Topology.Algebra.Order.Floor
 
-#align_import section10topological_stuffs.sheet1
 
 -- definition of topological bases
 -- definition of topological bases

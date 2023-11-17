@@ -2,7 +2,6 @@ import Mathlib.Tactic.Default
 import Data.Finsupp.Basic
 import Data.Polynomial.Basic
 
-#align_import solutions.section11vector_spaces.sheet3
 
 -- finitely-supported functions
 -- finitely-supported functions

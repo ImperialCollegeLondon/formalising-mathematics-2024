@@ -5,7 +5,6 @@ Author : Kevin Buzzard
 -/
 import Mathlib.Tactic.Default
 
-#align_import section03functions.sheet3
 
 -- imports all the Lean tactics
 -- imports all the Lean tactics

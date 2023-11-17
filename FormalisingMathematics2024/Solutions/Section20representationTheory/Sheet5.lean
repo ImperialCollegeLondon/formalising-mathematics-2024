@@ -5,7 +5,6 @@ Author : Kevin Buzzard
 -/
 import RepresentationTheory.FdRep
 
-#align_import solutions.section20representation_theory.sheet5
 
 -- finite-dimensional representations
 -- finite-dimensional representations

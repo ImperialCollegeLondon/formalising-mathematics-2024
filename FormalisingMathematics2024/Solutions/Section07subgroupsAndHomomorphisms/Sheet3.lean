@@ -6,7 +6,6 @@ Author : Kevin Buzzard
 import Mathlib.Tactic.Default
 import GroupTheory.QuotientGroup
 
-#align_import solutions.section07subgroups_and_homomorphisms.sheet3
 
 -- imports all the Lean tactics
 -- imports all the Lean tactics

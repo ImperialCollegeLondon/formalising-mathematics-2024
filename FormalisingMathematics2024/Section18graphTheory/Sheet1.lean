@@ -6,7 +6,6 @@ Author : Kevin Buzzard
 import Mathlib.Tactic.Default
 import Combinatorics.SimpleGraph.Basic
 
-#align_import section18graph_theory.sheet1
 
 -- definition of graph
 -- definition of graph

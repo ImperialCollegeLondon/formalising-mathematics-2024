@@ -8,7 +8,6 @@ import Analysis.Calculus.ParametricIntegral
 import Analysis.Calculus.ContDiff
 import Analysis.SpecialFunctions.Trigonometric.Deriv
 
-#align_import solutions.section17curves_and_surfaces.sheet1
 
 /-
 

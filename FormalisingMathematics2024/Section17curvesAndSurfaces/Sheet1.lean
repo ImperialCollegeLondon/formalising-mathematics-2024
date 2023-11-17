@@ -7,7 +7,6 @@ import Mathlib.Tactic.Default
 import Analysis.Calculus.ParametricIntegral
 import Analysis.Calculus.ContDiff
 
-#align_import section17curves_and_surfaces.sheet1
 
 /-
 

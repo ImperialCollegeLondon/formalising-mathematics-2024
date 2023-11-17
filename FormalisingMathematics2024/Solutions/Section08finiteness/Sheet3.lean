@@ -5,7 +5,6 @@ Author : Kevin Buzzard
 -/
 import Mathlib.Tactic.Default
 
-#align_import solutions.section08finiteness.sheet3
 
 /-
 

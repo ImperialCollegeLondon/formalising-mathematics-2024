@@ -7,7 +7,6 @@ import Mathlib.Tactic.Default
 import Topology.SubsetProperties
 import RingTheory.Int.Basic
 
-#align_import solutions.section10topological_stuffs.sheet2
 
 /-!
 # Proof of infinitude of prime numbers using topology

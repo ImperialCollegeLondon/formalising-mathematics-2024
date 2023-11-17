@@ -7,7 +7,6 @@ import Mathlib.Tactic.Default
 import LinearAlgebra.Basis
 import LinearAlgebra.Matrix.ToLin
 
-#align_import solutions.section11vector_spaces.sheet4
 
 /-!
 

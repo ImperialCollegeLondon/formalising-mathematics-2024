@@ -6,7 +6,6 @@ Author : Jason Kexing Ying, Kevin Buzzard
 import Mathlib.Tactic.Default
 import MeasureTheory.Integral.Bochner
 
-#align_import solutions.section12measure_theory.sheet4
 
 -- imports all the Lean tactics
 -- imports all the Lean tactics

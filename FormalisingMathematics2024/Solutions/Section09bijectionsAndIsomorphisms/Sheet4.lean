@@ -1,7 +1,6 @@
 import Mathlib.Tactic.Default
 import Algebra.Ring.Equiv
 
-#align_import solutions.section09bijections_and_isomorphisms.sheet4
 
 -- ring isomorphisms
 -- ring isomorphisms

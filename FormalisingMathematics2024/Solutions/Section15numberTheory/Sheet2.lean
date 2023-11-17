@@ -6,7 +6,6 @@ Author : Kevin Buzzard
 import Mathlib.Tactic.Default
 import NumberTheory.Divisors
 
-#align_import solutions.section15number_theory.sheet2
 
 -- added to make Bhavik's proof work
 -- added to make Bhavik's proof work

@@ -7,7 +7,6 @@ import NumberTheory.NumberField.ClassNumber
 import RingTheory.DedekindDomain.Factorization
 import Mathlib.Tactic.Default
 
-#align_import section19algebraic_number_theory.sheet3
 
 /-
 

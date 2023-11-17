@@ -7,7 +7,6 @@ import Mathlib.Tactic.Default
 import Algebra.EuclideanDomain.Instances
 import Data.Polynomial.FieldDivision
 
-#align_import section14UFDs_and_PIDs_etc.sheet2
 
 -- polynomial rings over a field are EDs
 -- polynomial rings over a field are EDs

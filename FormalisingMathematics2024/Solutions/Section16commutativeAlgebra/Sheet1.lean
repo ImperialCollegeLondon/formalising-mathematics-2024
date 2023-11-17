@@ -6,7 +6,6 @@ Author : Kevin Buzzard
 import Mathlib.Tactic.Default
 import RingTheory.Noetherian
 
-#align_import solutions.section16commutative_algebra.sheet1
 
 -- theory of Noetherian rings
 -- theory of Noetherian rings

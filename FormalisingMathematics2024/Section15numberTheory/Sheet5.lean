@@ -6,7 +6,6 @@ Author : Kevin Buzzard
 import Mathlib.Tactic.Default
 import Data.Zmod.Basic
 
-#align_import section15number_theory.sheet5
 
 namespace Section15sheet5
 

@@ -6,7 +6,6 @@ Author : Kevin Buzzard
 import Mathlib.Tactic.Default
 import MeasureTheory.Function.LpSpace
 
-#align_import solutions.section17curves_and_surfaces.sheet5
 
 -- theory of ℓᵖ spaces
 -- theory of ℓᵖ spaces

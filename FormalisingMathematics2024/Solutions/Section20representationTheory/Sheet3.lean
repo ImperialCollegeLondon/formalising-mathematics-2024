@@ -6,7 +6,6 @@ Author : Kevin Buzzard
 import RepresentationTheory.Basic
 import RepresentationTheory.Maschke
 
-#align_import solutions.section20representation_theory.sheet3
 
 -- Maschke's theorem
 -- Maschke's theorem

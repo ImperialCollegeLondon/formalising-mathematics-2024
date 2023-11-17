@@ -6,7 +6,6 @@ Author : Kevin Buzzard
 import Mathlib.Tactic.Default
 import Data.Real.Basic
 
-#align_import section05sets.sheet4
 
 -- imports all the Lean tactics
 -- imports all the Lean tactics
