@@ -3,7 +3,7 @@ Copyright (c) 2022 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
-import Mathbin.Tactic.Default
+import Mathlib.Tactic.Default
 import Data.Real.Basic
 
 #align_import section02reals.sheet4

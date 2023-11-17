@@ -3,7 +3,7 @@ Copyright (c) 2023 Jujian Zhang. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Jujian Zhang
 -/
-import Mathbin.Tactic.Default
+import Mathlib.Tactic.Default
 import Topology.SubsetProperties
 import RingTheory.Int.Basic
 

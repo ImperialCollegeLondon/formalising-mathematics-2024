@@ -5,7 +5,7 @@ Author : Kevin Buzzard
 -/
 import NumberTheory.NumberField.ClassNumber
 import RingTheory.DedekindDomain.Factorization
-import Mathbin.Tactic.Default
+import Mathlib.Tactic.Default
 
 #align_import solutions.section19algebraic_number_theory.sheet3
 

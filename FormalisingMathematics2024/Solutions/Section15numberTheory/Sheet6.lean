@@ -1,4 +1,4 @@
-import Mathbin.Tactic.Default
+import Mathlib.Tactic.Default
 import Data.Zmod.Basic
 import FieldTheory.Finite.Basic
 import Data.Nat.PrimeNormNum

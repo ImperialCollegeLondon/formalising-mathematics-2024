@@ -5,7 +5,7 @@ Author : Kevin Buzzard
 -/
 import Data.Real.Basic
 import NumberTheory.NumberField.ClassNumber
-import Mathbin.Tactic.Default
+import Mathlib.Tactic.Default
 
 #align_import section19algebraic_number_theory.sheet1
 

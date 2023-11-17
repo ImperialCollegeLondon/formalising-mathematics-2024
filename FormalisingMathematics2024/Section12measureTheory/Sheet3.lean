@@ -3,7 +3,7 @@ Copyright (c) 2023 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
-import Mathbin.Tactic.Default
+import Mathlib.Tactic.Default
 import MeasureTheory.MeasurableSpace
 
 #align_import section12measure_theory.sheet3
