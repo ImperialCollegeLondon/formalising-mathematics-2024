@@ -3,7 +3,7 @@ Copyright (c) 2022 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
-import Mathlib.Tactic.Default
+import Mathlib.Tactic -- imports all the Lean tactics
 
 
 /-!
@@ -18,33 +18,47 @@ You'll need to know about the tactics from the previous sheets,
 and also the following tactics:
 
 * `cases`
-* `split`
+* `constructor`
 
 -/
 
-
--- imports all the Lean tactics
--- imports all the Lean tactics
 -- Throughout this sheet, `P`, `Q` and `R` will denote propositions.
 variable (P Q R : Prop)
 
-example : P ∧ Q → P := by sorry
+example : P ∧ Q → P := by
+  sorry
+  done
 
-example : P ∧ Q → Q := by sorry
+example : P ∧ Q → Q := by
+  sorry
+  done
 
-example : (P → Q → R) → P ∧ Q → R := by sorry
+example : (P → Q → R) → P ∧ Q → R := by
+  sorry
+  done
 
-example : P → Q → P ∧ Q := by sorry
+example : P → Q → P ∧ Q := by
+  sorry
+  done
 
 /-- `∧` is symmetric -/
-example : P ∧ Q → Q ∧ P := by sorry
+example : P ∧ Q → Q ∧ P := by
+  sorry
+  done
 
-example : P → P ∧ True := by sorry
+example : P → P ∧ True := by
+  sorry
+  done
 
-example : False → P ∧ False := by sorry
+example : False → P ∧ False := by
+  sorry
+  done
 
 /-- `∧` is transitive -/
-example : P ∧ Q → Q ∧ R → P ∧ R := by sorry
+example : P ∧ Q → Q ∧ R → P ∧ R := by
+  sorry
+  done
 
-example : (P ∧ Q → R) → P → Q → R := by sorry
-
+example : (P ∧ Q → R) → P → Q → R := by
+  sorry
+  done
