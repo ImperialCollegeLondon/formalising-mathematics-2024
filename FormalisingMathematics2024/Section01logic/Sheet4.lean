@@ -17,7 +17,7 @@ We learn about how to manipulate `P ∧ Q` in Lean.
 You'll need to know about the tactics from the previous sheets,
 and also the following tactics:
 
-* `cases`
+* `cases'`
 * `constructor`
 
 -/

@@ -3,8 +3,7 @@ Copyright (c) 2022 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
-import Mathlib.Tactic.Default
-
+import Mathlib.Tactic -- imports all the Lean tactics
 
 /-!
 
@@ -25,8 +24,6 @@ if you can understand what's going on.
 -/
 
 
--- imports all the Lean tactics
--- imports all the Lean tactics
 -- Throughout this sheet, `P`, `Q` and `R` will denote propositions.
 variable (P Q R : Prop)
 
@@ -75,4 +72,3 @@ example : (True → False) → P := by
   exfalso
   apply h
   triv
-

@@ -3,7 +3,7 @@ Copyright (c) 2022 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
-import Mathlib.Tactic.Default
+import Mathlib.Tactic -- imports all the Lean tactics
 
 
 /-!
@@ -17,14 +17,11 @@ We learn about how to manipulate `P ∧ Q` in Lean.
 You'll need to know about the tactics from the previous sheets,
 and also the following tactics:
 
-* `cases`
-* `split`
+* `cases'`
+* `constructor`
 
 -/
 
-
--- imports all the Lean tactics
--- imports all the Lean tactics
 -- Throughout this sheet, `P`, `Q` and `R` will denote propositions.
 variable (P Q R : Prop)
 
@@ -73,4 +70,3 @@ example : (P ∧ Q → R) → P → Q → R := by
   intro h hP hQ
   apply h
   constructor <;> assumption
-

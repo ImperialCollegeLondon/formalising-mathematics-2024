@@ -22,7 +22,6 @@ and also the following two new tactics:
 -/
 
 
--- imports all the Lean tactics
 variable (P Q R S : Prop)
 
 example : P ↔ P := by

@@ -24,7 +24,6 @@ if you can understand what's going on.
 -/
 
 
--- imports all the Lean tactics
 -- Throughout this sheet, `P`, `Q` and `R` will denote propositions.
 variable (P Q R : Prop)
 

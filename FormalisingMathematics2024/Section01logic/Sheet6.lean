@@ -18,7 +18,7 @@ You'll need to know about the tactics from the previous sheets,
 and also the following tactics
 
 * `left` and `right`
-* `cases` (new functionality)
+* `cases'` (new functionality)
 
 -/
 
