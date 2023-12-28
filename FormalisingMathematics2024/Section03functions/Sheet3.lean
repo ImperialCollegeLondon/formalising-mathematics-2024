@@ -75,5 +75,4 @@ theorem gf_surjective : Surjective (g ∘ f) := by
 example : ¬∀ A B C : Type, ∀ (φ : A → B) (ψ : B → C), Surjective (ψ ∘ φ) → Surjective φ := by
   sorry
 
--- this line does three `cases` at once.
 end Section3sheet1
