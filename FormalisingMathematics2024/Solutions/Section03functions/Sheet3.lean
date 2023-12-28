@@ -74,17 +74,16 @@ example : ¬∀ A B C : Type, ∀ (φ : A → B) (ψ : B → C), Injective (ψ �
   specialize h X Y Z f g gf_injective gYb_eq_gYc
   cases h
 
--- You might want to make some sublemmas first.
+-- Below is another one. Let's make a sublemma first.
 theorem gf_surjective : Surjective (g ∘ f) := by
   intro z
   use X.a
 
--- This is another one.
+-- Another question from IUM
 example : ¬∀ A B C : Type, ∀ (φ : A → B) (ψ : B → C), Surjective (ψ ∘ φ) → Surjective φ :=
   by
   intro h
   specialize h X Y Z f g gf_surjective Y.c
-  rcases h with ⟨⟨_⟩, ⟨⟩⟩
+  rcases h with ⟨⟨_⟩, ⟨⟩⟩ -- this line does lots of `cases` all in one go.
 
--- this line does three `cases` at once.
 end Section3sheet1solutions

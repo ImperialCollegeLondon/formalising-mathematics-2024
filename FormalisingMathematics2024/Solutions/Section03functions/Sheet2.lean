@@ -91,7 +91,7 @@ example : f a = 37 :=
 
 -- Here is a proof that `f` is an injective function.
 -- At some point in this proof there are 9 goals; you can see them
--- by changing the `;` after `cases y` to a `,`. The <semicolon> means
+-- by changing the `;` after `cases y` to a `,`. The <;> means
 -- "apply the next tactic to all the goals produced by the last tactic".
 example : Function.Injective f := by
   intro x y h

@@ -85,19 +85,19 @@ def f : X → ℕ
   | b => 42
   | c => 0
 
-example : f a = 37 :=
-  by-- true by definition
+example : f a = 37 := by-- true by definition
   rfl
 
 -- Here is a proof that `f` is an injective function.
 -- At some point in this proof there are 9 goals; you can see them
--- by changing the `;` after `cases y` to a `,`. The <semicolon> means
+-- by changing the `;` after `cases y` to a `,`. The <;> means
 -- "apply the next tactic to all the goals produced by the last tactic".
 example : Function.Injective f := by
   intro x y h
   cases x <;> cases y -- at this point there are 9 goals, and for each goal either the conclusion
     -- is true by refl, or there's a false hypothesis `h`.
   all_goals try rfl
-  all_goals cases h
+  -- 6 goals left
+  all_goals cases h -- no cases :-)
 
 end Section3sheet2
