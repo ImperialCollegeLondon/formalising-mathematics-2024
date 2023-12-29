@@ -19,20 +19,6 @@ groups, rings, whatever: what's the point if these things are there already?
 So in this sheet I explain how to use Lean's groups.
 
 -/
-/-
-
-# Groups
-
-## How to use Lean's groups
-
-In previous courses I have made groups from scratch, but it's kind of irritating
-to do (because all the lemma names like `mul_one` are already taken) and I'm
-not entirely sure that most students want to know how to make their own
-groups, rings, whatever: what's the point if these things are there already?
-
-So in this sheet I explain how to use Lean's groups.
-
--/
 
 -- let G be a group
 variable (G : Type) [Group G]
