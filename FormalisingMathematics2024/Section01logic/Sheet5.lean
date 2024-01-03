@@ -3,8 +3,7 @@ Copyright (c) 2022 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
-import Mathlib.Tactic.Default
-
+import Mathlib.Tactic -- imports all the Lean tactics
 
 /-!
 
@@ -23,27 +22,44 @@ and also the following two new tactics:
 -/
 
 
--- imports all the Lean tactics
--- imports all the Lean tactics
 variable (P Q R S : Prop)
 
-example : P ↔ P := by sorry
+example : P ↔ P := by
+  sorry
+  done
 
-example : (P ↔ Q) → (Q ↔ P) := by sorry
+example : (P ↔ Q) → (Q ↔ P) := by
+  sorry
+  done
 
-example : (P ↔ Q) ↔ (Q ↔ P) := by sorry
+example : (P ↔ Q) ↔ (Q ↔ P) := by
+  sorry
+  done
 
-example : (P ↔ Q) → (Q ↔ R) → (P ↔ R) := by sorry
+example : (P ↔ Q) → (Q ↔ R) → (P ↔ R) := by
+  sorry
+  done
 
-example : P ∧ Q ↔ Q ∧ P := by sorry
+example : P ∧ Q ↔ Q ∧ P := by
+  sorry
+  done
 
-example : (P ∧ Q) ∧ R ↔ P ∧ Q ∧ R := by sorry
+example : (P ∧ Q) ∧ R ↔ P ∧ Q ∧ R := by
+  sorry
+  done
 
-example : P ↔ P ∧ True := by sorry
+example : P ↔ P ∧ True := by
+  sorry
+  done
 
-example : False ↔ P ∧ False := by sorry
+example : False ↔ P ∧ False := by
+  sorry
+  done
 
-example : (P ↔ Q) → (R ↔ S) → (P ∧ R ↔ Q ∧ S) := by sorry
+example : (P ↔ Q) → (R ↔ S) → (P ∧ R ↔ Q ∧ S) := by
+  sorry
+  done
 
-example : ¬(P ↔ ¬P) := by sorry
-
+example : ¬(P ↔ ¬P) := by
+  sorry
+  done

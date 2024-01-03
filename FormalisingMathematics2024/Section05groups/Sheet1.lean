@@ -19,20 +19,6 @@ groups, rings, whatever: what's the point if these things are there already?
 So in this sheet I explain how to use Lean's groups.
 
 -/
-/-
-
-# Groups
-
-## How to use Lean's groups
-
-In previous courses I have made groups from scratch, but it's kind of irritating
-to do (because all the lemma names like `mul_one` are already taken) and I'm
-not entirely sure that most students want to know how to make their own
-groups, rings, whatever: what's the point if these things are there already?
-
-So in this sheet I explain how to use Lean's groups.
-
--/
 
 -- let G be a group
 variable (G : Type) [Group G]
@@ -64,19 +50,19 @@ example (g : G) : g⁻¹ * g = 1 :=
 -- the output (the blue output in the infoview) and replace `exact?`
 -- with the name of the axiom it found. Note also that you can instead *guess*
 -- the names of the axioms. For example what do you think the proof of `1 * a = a` is called?
-example (a b c : G) : a * b * c = a * (b * c) :=
-  mul_assoc a b c
+example (a b c : G) : a * b * c = a * (b * c) := by
+  sorry
 
 -- can be found with `library_search` if you didn't know the answer already
-example (a : G) : a * 1 = a :=
-  mul_one a
+example (a : G) : a * 1 = a := by
+  sorry
 
 -- Can you guess the last two?
-example (a : G) : 1 * a = a :=
-  one_mul a
+example (a : G) : 1 * a = a := by
+  sorry
 
-example (a : G) : a * a⁻¹ = 1 :=
-  mul_inv_self a
+example (a : G) : a * a⁻¹ = 1 := by
+  sorry
 
 -- As well as the axioms, Lean has many other standard facts which are true
 -- in all groups. See if you can prove these from the axioms, or find them
@@ -84,35 +70,27 @@ example (a : G) : a * a⁻¹ = 1 :=
 -- let a,b,c be elements of G in the below.
 variable (a b c : G)
 
--- inv_mul_cancel_left
-example : a⁻¹ * (a * b) = b := by rw [← mul_assoc, inv_mul_self, one_mul]
+example : a⁻¹ * (a * b) = b := by
+  sorry
 
--- mul_inv_cancel_left
-example : a * (a⁻¹ * b) = b := by rw [← mul_assoc, mul_inv_self, one_mul]
+example : a * (a⁻¹ * b) = b := by
+  sorry
 
--- left_inv_eq_right_inv
-example {a b c : G} (h1 : b * a = 1) (h2 : a * c = 1) : b = c :=
-  by
-  have h : b * (a * c) = b * a * c := by rw [mul_assoc]
-  rwa [h1, h2, mul_one, one_mul] at h
+example {a b c : G} (h1 : b * a = 1) (h2 : a * c = 1) : b = c := by
+  -- hint for this one if you're doing it from first principles: `b * (a * c) = (b * a) * c`
+  sorry
 
--- mul_eq_one_iff_inv_eq
 example : a * b = 1 ↔ a⁻¹ = b := by
-  constructor
-  · intro h
-    exact left_inv_eq_right_inv (inv_mul_self a) h
-  · rintro rfl
-    exact mul_inv_self a
+  sorry
 
--- inv_one
-example : (1 : G)⁻¹ = 1 := by rw [← mul_eq_one_iff_inv_eq, mul_one]
+example : (1 : G)⁻¹ = 1 := by
+  sorry
 
--- inv_inv
-example : a⁻¹⁻¹ = a := by rw [← mul_eq_one_iff_inv_eq, inv_mul_self]
+example : a⁻¹⁻¹ = a := by
+  sorry
 
--- mul_inv_rev
 example : (a * b)⁻¹ = b⁻¹ * a⁻¹ := by
-  rw [← mul_eq_one_iff_inv_eq, ← mul_assoc, mul_assoc a, mul_inv_self, mul_one, mul_inv_self]
+  sorry
 
 /-
 
@@ -128,16 +106,8 @@ try and prove the next example manually by rewriting with the lemmas above
 educated guessing).
 
 -/
-example : (b⁻¹ * a⁻¹)⁻¹ * 1⁻¹⁻¹ * b⁻¹ * (a⁻¹ * a⁻¹⁻¹⁻¹) * a = 1 := by
-  rw [inv_one, inv_one, mul_one, mul_inv_rev, inv_inv, inv_inv, mul_assoc, mul_assoc, mul_assoc,
-    mul_inv_cancel_left, mul_assoc, mul_inv_cancel_left, inv_mul_self]
+example : (b⁻¹ * a⁻¹)⁻¹ * 1⁻¹⁻¹ * b⁻¹ * (a⁻¹ * a⁻¹⁻¹⁻¹) * a = 1 := by group
 
 -- Try this trickier problem: if g^2=1 for all g in G, then G is abelian
-example (h : ∀ g : G, g * g = 1) : ∀ g h : G, g * h = h * g :=
-  by
-  have useful : ∀ g : G, g = g⁻¹ := by
-    intro g
-    rw [← eq_comm, ← mul_eq_one_iff_inv_eq]
-    exact h g
-  intro g h
-  rw [useful (g * h), mul_inv_rev, ← useful g, ← useful h]
+example (h : ∀ g : G, g * g = 1) : ∀ g h : G, g * h = h * g := by
+  sorry

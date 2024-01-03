@@ -3,8 +3,7 @@ Copyright (c) 2022 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
-import Mathlib.Tactic.Default
-
+import Mathlib.Tactic -- imports all the Lean tactics
 
 /-!
 
@@ -25,28 +24,45 @@ if you can understand what's going on.
 -/
 
 
--- imports all the Lean tactics
--- imports all the Lean tactics
 -- Throughout this sheet, `P`, `Q` and `R` will denote propositions.
 variable (P Q R : Prop)
 
-example : True := by sorry
+example : True := by
+  sorry
+  done
 
-example : True → True := by sorry
+example : True → True := by
+  sorry
+  done
 
-example : False → True := by sorry
+example : False → True := by
+  sorry
+  done
 
-example : False → False := by sorry
+example : False → False := by
+  sorry
+  done
 
-example : (True → False) → False := by sorry
+example : (True → False) → False := by
+  sorry
+  done
 
-example : False → P := by sorry
+example : False → P := by
+  sorry
+  done
 
-example : True → False → True → False → True → False := by sorry
+example : True → False → True → False → True → False := by
+  sorry
+  done
 
-example : P → (P → False) → False := by sorry
+example : P → (P → False) → False := by
+  sorry
+  done
 
-example : (P → False) → P → Q := by sorry
+example : (P → False) → P → Q := by
+  sorry
+  done
 
-example : (True → False) → P := by sorry
-
+example : (True → False) → P := by
+  sorry
+  done

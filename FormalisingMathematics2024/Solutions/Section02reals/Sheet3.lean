@@ -3,14 +3,8 @@ Copyright (c) 2022 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
-import Mathlib.Tactic.Default
-import Data.Real.Basic
+import Mathlib.Tactic -- import all the tactics
 
-
--- imports all the Lean tactics
--- imports all the Lean tactics
--- imports the real numbers
--- imports the real numbers
 namespace Section2sheet3solutions
 
 /-
@@ -20,25 +14,24 @@ namespace Section2sheet3solutions
 We give the standard `ε`, `N` definition of the limit of a sequence
 and prove some theorems about them.
 
-## lambda (λ) notation for functions
+## `fun` notation for functions
 
 Here's how we define the functions from the naturals to the naturals
 sending n to n^2 + 3:
 
 -/
-def f : ℕ → ℝ := fun n => n ^ 2 + 3
+
+def f : ℕ → ℝ := fun n ↦ n ^ 2 + 3
 
 /-
 
-Mathematicians might write `n ↦ n^2+3` for this functions; indeed `λ` is
-just prefix notation for the infix notation `↦` (i.e. you write `λ` at
-the front and `↦` in the middle but they mean the same thing). You can
+Mathematicians might write `n ↦ n^2+3` for this function. You can
 read more about function types in the "three kinds of types" section
 of Part B of the course book.
 
 Sometimes you might find yourself with a lambda-defined function
 evaluated at a number. For example, you might see something like
-`(λ n, n^2 + 3) 37`, which means "take the function sending
+`(fun n => n^2 + 3) 37`, which means "take the function sending
 `n` to `n^2+3` and then evaluate it at 37". You can use the `dsimp`
 (or `dsimp only`) tactic to simplify this to `37^2+3`.
 
@@ -46,12 +39,12 @@ The reason we need to know about function notation for this sheet
 is that a sequence `x₀, x₁, x₂, …` of reals on this sheet will
 be encoded as a function from `ℕ` to `ℝ` sending `0` to `x₀`, `1` to `x₁`
 and so on.
- 
+
 ## Limit of a sequence.
 
 Here's the definition of the limit of a sequence.
 -/
-/-- If `a(n)` is a sequence of reals and `t` is a real, `tends_to a t`
+/-- If `a(n)` is a sequence of reals and `t` is a real, `TendsTo a t`
 is the assertion that the limit of `a(n)` as `n → ∞` is `t`. -/
 def TendsTo (a : ℕ → ℝ) (t : ℝ) : Prop :=
   ∀ ε > 0, ∃ B : ℕ, ∀ n, B ≤ n → |a n - t| < ε
@@ -59,18 +52,18 @@ def TendsTo (a : ℕ → ℝ) (t : ℝ) : Prop :=
 /-
 
 We've made a definition, so it's our job to now make the API
-for the definition, i.e. prove some basic theorems about it. 
+for the definition, i.e. prove some basic theorems about it.
+
 -/
--- If your goal is `tends_to a t` and you want to replace it with
--- `∀ ε > 0, ∃ B, …` then you can do this with `rw tends_to_def`.
+-- If your goal is `TendsTo a t` and you want to replace it with
+-- `∀ ε > 0, ∃ B, …` then you can do this with `rw tendsTo_def`.
 theorem tendsTo_def {a : ℕ → ℝ} {t : ℝ} :
-    TendsTo a t ↔ ∀ ε, 0 < ε → ∃ B : ℕ, ∀ n, B ≤ n → |a n - t| < ε :=
-  by-- true by definition
-  rfl
+    TendsTo a t ↔ ∀ ε, 0 < ε → ∃ B : ℕ, ∀ n, B ≤ n → |a n - t| < ε := by
+  rfl  -- true by definition
 
 -- the eagle-eyed viewers amongst you might have spotted
 -- that `∀ ε > 0, ...` and `∀ ε, ε > 0 → ...` and `∀ ε, 0 < ε → ...`
--- are all definitionally equal, so `refl` sees through them. 
+-- are all definitionally equal, so `rfl` sees through them.
 /-
 
 ## The questions
@@ -81,9 +74,9 @@ Note that `norm_num` can work with `|x|` if `x` is a numeral like 37,
 but it can't do anything with it if it's a variable.
 -/
 /-- The limit of the constant sequence with value 37 is 37. -/
-theorem tendsTo_thirtyseven : TendsTo (fun n => 37) 37 :=
+theorem tendsTo_thirtyseven : TendsTo (fun n ↦ 37) 37 :=
   by
-  rw [tends_to_def]
+  rw [tendsTo_def]
   intro ε hε
   use 100
   intro n hn
@@ -105,40 +98,31 @@ theorem tendsTo_const (c : ℝ) : TendsTo (fun n => c) c :=
 theorem tendsTo_add_const {a : ℕ → ℝ} {t : ℝ} (c : ℝ) (h : TendsTo a t) :
     TendsTo (fun n => a n + c) (t + c) :=
   by
-  rw [tends_to_def] at h ⊢
+  rw [tendsTo_def] at h ⊢
   ring_nf
   exact h
 
 /-- If `a(n)` tends to `t` then `-a(n)` tends to `-t`.  -/
-example {a : ℕ → ℝ} {t : ℝ} (ha : TendsTo a t) : TendsTo (fun n => -a n) (-t) :=
-  by
-  rw [tends_to_def] at ha ⊢
-  -- direct congr application:
-  --   revert ha,
-  --   refine iff.mp _,
-  --   rw iff_iff_eq,
-  --   apply pi_congr (λ _, _),
-  --   apply pi_congr (λ _, _),
-  --   congr,
-  --   apply funext (λ _, _),
-  --   apply pi_congr (λ _, _),
-  --   apply pi_congr (λ _, _),
-  --   congr' 1,
-  --   sorry
-  -- end
-  -- #exit
-  --  convert ha using 3,
+example {a : ℕ → ℝ} {t : ℝ} (ha : TendsTo a t) : TendsTo (fun n => -a n) (-t) := by
+  rw [tendsTo_def] at ha ⊢
   intro ε hε
   specialize ha ε hε
   cases' ha with B hB
   use B
   intro n hn
   specialize hB n hn
-  have h : ∀ x : ℝ, |-x| = |x| := abs_neg
-  -- thanks library_search
+  have h : ∀ x : ℝ, |-x| = |x| := abs_neg -- thanks exact?
   rw [← h]
   ring_nf at hB ⊢
   exact hB
 
-end Section2sheet3solutions
+-- another approach using the `peel` tactic.
+example {a : ℕ → ℝ} {t : ℝ} (ha : TendsTo a t) : TendsTo (fun n => -a n) (-t) := by
+  rw [tendsTo_def] at ha ⊢
+  peel ha with h ε hε B N hBN
+  convert h using 1
+  -- have h2 : ∀ x : ℝ, |-x| = |x| := by exact fun x => abs_neg x
+  convert abs_neg _ using 2
+  ring
 
+end Section2sheet3solutions

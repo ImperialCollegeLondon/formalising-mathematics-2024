@@ -3,14 +3,13 @@ Copyright (c) 2023 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
-import Mathlib.Tactic.Default
-
+import Mathlib.Tactic -- imports all the tactics
 
 /-!
 
 # Challenge sheet
 
-This is a harder group theory question. 
+This is a harder group theory question.
 
 It turns out that two of the axioms in our definition of a group
 are not needed; they can be deduced from the others. Let's define
@@ -21,8 +20,6 @@ proving the other axioms?
 -/
 
 
--- imports all the Lean tactics
--- imports all the Lean tactics
 -- removing `mul_one` and `mul_inv_self` from the five standard axioms
 -- for a group.
 class WeakGroup (G : Type) extends One G, Mul G, Inv G : Type where
@@ -41,7 +38,7 @@ proving the missing axioms `mul_one` and `mul_inv_self`. Note that you
 can't use the `group` tactic any more because `G` isn't a group yet:
 this is what you're trying to prove!
 
-One way of doing it: try proving 
+One way of doing it: try proving
 
 `mul_left_cancel : a * b = a * c → b = c`
 
@@ -53,7 +50,7 @@ first.
 
 -/
 -- proof using cool `calc` mode
-theorem hMul_left_cancel (h : a * b = a * c) : b = c :=
+theorem mul_left_cancel (h : a * b = a * c) : b = c :=
   calc
     b = 1 * b := by rw [one_mul]
     _ = a⁻¹ * a * b := by rw [inv_mul_self]
@@ -63,17 +60,16 @@ theorem hMul_left_cancel (h : a * b = a * c) : b = c :=
     _ = 1 * c := by rw [inv_mul_self]
     _ = c := by rw [one_mul]
 
-theorem hMul_eq_of_eq_inv_hMul (h : b = a⁻¹ * c) : a * b = c :=
-  by
+theorem mul_eq_of_eq_inv_mul (h : b = a⁻¹ * c) : a * b = c := by
   apply mul_left_cancel a⁻¹
   rwa [← mul_assoc, inv_mul_self, one_mul]
 
-theorem hMul_one (a : G) : a * 1 = a :=
+theorem mul_one (a : G) : a * 1 = a :=
   by
   apply mul_eq_of_eq_inv_mul
   rw [inv_mul_self]
 
-theorem hMul_inv_self (a : G) : a * a⁻¹ = 1 :=
+theorem mul_inv_self (a : G) : a * a⁻¹ = 1 :=
   by
   apply mul_eq_of_eq_inv_mul
   rw [mul_one]
@@ -88,7 +84,7 @@ a new class `bad_group` by replacing
 then it is no longer true that you can prove `mul_inv_self`;
 there are structures which satisfy `mul_assoc`, `mul_one`
 and `inv_mul_self` but which really are not groups.
-Can you find an example? Try it on paper first. 
+Can you find an example? Try it on paper first.
 
 -/
 -- claim: not a group in general
@@ -101,10 +97,10 @@ instance : One Bool :=
   ⟨Bool.true⟩
 
 instance : Mul Bool :=
-  ⟨fun x y => x⟩
+  ⟨fun x y ↦ x⟩
 
 instance : Inv Bool :=
-  ⟨fun x => 1⟩
+  ⟨fun x ↦ 1⟩
 
 instance : BadGroup Bool where
   mul_assoc := by decide
@@ -112,4 +108,3 @@ instance : BadGroup Bool where
   inv_mul_self := by decide
 
 example : ¬∀ a : Bool, 1 * a = a := by decide
-

@@ -1,10 +1,9 @@
 /-
-Copyright (c) 2021 Kevin Buzzard. All rights reserved.
+Copyright (c) 2022 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
-import Mathlib.Tactic.Default
-
+import Mathlib.Tactic -- import all the tactics
 
 /-!
 
@@ -22,7 +21,7 @@ https://www.ma.imperial.ac.uk/~buzzard/xena/formalising-mathematics-2023/Part_B/
 ## Tactics
 
 You'll need to know about the tactics from the previous sheets,
-and also the following tactics:
+and the following tactics may also be useful:
 
 * `change`
 * `by_contra`
@@ -30,15 +29,12 @@ and also the following tactics:
 
 -/
 
-
--- imports all the Lean tactics
--- imports all the Lean tactics
 -- Throughout this sheet, `P`, `Q` and `R` will denote propositions.
 variable (P Q R : Prop)
 
 example : ¬True → False := by
   intro h
-  change True → False at h 
+  change True → False at h -- you don't have to do this
   apply h
   triv
 
@@ -93,9 +89,8 @@ example : ¬¬P → P := by
 
 example : (¬Q → ¬P) → P → Q := by
   intro h hP
-  change (Q → False) → P → False at h 
+  change (Q → False) → P → False at h
   by_contra hnQ
   apply h
   · exact hnQ
   · exact hP
-

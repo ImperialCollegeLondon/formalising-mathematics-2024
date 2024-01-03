@@ -3,8 +3,7 @@ Copyright (c) 2022 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
-import Mathlib.Tactic.Default
-
+import Mathlib.Tactic -- imports all the Lean tactics
 
 /-!
 
@@ -23,11 +22,10 @@ and also the following two new tactics:
 -/
 
 
--- imports all the Lean tactics
--- imports all the Lean tactics
 variable (P Q R S : Prop)
 
-example : P ↔ P := by rfl
+example : P ↔ P := by
+  rfl
 
 example : (P ↔ Q) → (Q ↔ P) := by
   intro h
@@ -40,9 +38,9 @@ example : (P ↔ Q) ↔ (Q ↔ P) := by
 
 example : (P ↔ Q) → (Q ↔ R) → (P ↔ R) := by
   intro h1 h2
+-- rwa is rw + assumption
   rwa [h1]
 
--- rwa is rw + assumption
 example : P ∧ Q ↔ Q ∧ P := by
   constructor <;>
     · rintro ⟨h1, h2⟩
@@ -100,4 +98,3 @@ example : ¬(P ↔ ¬P) := by
   apply hnP
   rw [h]
   exact hnP
-

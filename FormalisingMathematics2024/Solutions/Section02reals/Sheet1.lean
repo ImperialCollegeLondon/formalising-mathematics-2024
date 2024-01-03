@@ -3,15 +3,13 @@ Copyright (c) 2022 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
-import Mathlib.Tactic.Default
-import Data.Real.Basic
-
+import Mathlib.Tactic -- import all the tactics
 
 /-!
 
 # The real numbers in Lean
 
-Lean has a copy of of the real numbers. It's called `real`, 
+Lean has a copy of of the real numbers. It's called `real`,
 but we use the usual notation `ℝ`. Put your cursor on the `ℝ` to find
 out how to type it in VS Code.
 
@@ -31,11 +29,6 @@ New tactics you'll need to know about:
 
 -/
 
-
--- imports all the Lean tactics
--- imports all the Lean tactics
--- imports the real numbers
--- imports the real numbers
 example : (2 : ℝ) + 2 = 4 := by norm_num
 
 example : (2 : ℝ) + 2 ≠ 5 := by norm_num
@@ -54,4 +47,3 @@ example : ∃ x y : ℝ, 2 * x + 3 * y = 7 ∧ x + 2 * y = 4 :=
   by
   use 2, 1
   norm_num
-

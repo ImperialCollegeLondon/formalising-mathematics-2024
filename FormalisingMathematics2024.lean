@@ -1,1 +1,12 @@
 import Mathlib
+import FormalisingMathematics2024.Section01logic.Sheet1
+import FormalisingMathematics2024.Section01logic.Sheet2
+import FormalisingMathematics2024.Section01logic.Sheet3
+import FormalisingMathematics2024.Section01logic.Sheet4
+import FormalisingMathematics2024.Section01logic.Sheet5
+import FormalisingMathematics2024.Section01logic.Sheet6
+import FormalisingMathematics2024.Section02reals.Sheet1
+import FormalisingMathematics2024.Section02reals.Sheet2
+import FormalisingMathematics2024.Section02reals.Sheet3
+import FormalisingMathematics2024.Section02reals.Sheet4
+import FormalisingMathematics2024.Section02reals.Sheet5

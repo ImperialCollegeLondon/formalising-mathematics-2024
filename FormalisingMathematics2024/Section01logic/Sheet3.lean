@@ -3,8 +3,7 @@ Copyright (c) 2022 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
-import Mathlib.Tactic.Default
-
+import Mathlib.Tactic -- import all the tactics
 
 /-!
 
@@ -30,31 +29,49 @@ and the following tactics may also be useful:
 
 -/
 
-
--- imports all the Lean tactics
--- imports all the Lean tactics
 -- Throughout this sheet, `P`, `Q` and `R` will denote propositions.
 variable (P Q R : Prop)
 
-example : ¬True → False := by sorry
+example : ¬True → False := by
+  sorry
+  done
 
-example : False → ¬True := by sorry
+example : False → ¬True := by
+  sorry
+  done
 
-example : ¬False → True := by sorry
+example : ¬False → True := by
+  sorry
+  done
 
-example : True → ¬False := by sorry
+example : True → ¬False := by
+  sorry
+  done
 
-example : False → ¬P := by sorry
+example : False → ¬P := by
+  sorry
+  done
 
-example : P → ¬P → False := by sorry
+example : P → ¬P → False := by
+  sorry
+  done
 
-example : P → ¬¬P := by sorry
+example : P → ¬¬P := by
+  sorry
+  done
 
-example : (P → Q) → ¬Q → ¬P := by sorry
+example : (P → Q) → ¬Q → ¬P := by
+  sorry
+  done
 
-example : ¬¬False → False := by sorry
+example : ¬¬False → False := by
+  sorry
+  done
 
-example : ¬¬P → P := by sorry
+example : ¬¬P → P := by
+  sorry
+  done
 
-example : (¬Q → ¬P) → P → Q := by sorry
-
+example : (¬Q → ¬P) → P → Q := by
+  sorry
+  done
