@@ -102,7 +102,7 @@ Lean's simplifier but armed with all the examples above; a theorem of Knuth and 
 says that these examples and the axioms of a group give a "confluent rewrite system"
 which can solve any identity in group theory. If you like you can
 try and prove the next example manually by rewriting with the lemmas above
-(if you know their names, which you can find out with `library_search` or by
+(if you know their names, which you can find out with `exact?` or by
 educated guessing).
 
 -/
