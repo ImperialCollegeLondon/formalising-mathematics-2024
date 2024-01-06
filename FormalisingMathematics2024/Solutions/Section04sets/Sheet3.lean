@@ -5,7 +5,6 @@ Author : Kevin Buzzard
 -/
 import Mathlib.Tactic -- imports all the Lean tactics
 
-
 /-!
 
 # Sets in Lean, sheet 3 : not in (`∉`) and complement `Aᶜ`
@@ -65,4 +64,5 @@ example : (∀ x, x ∈ A) ↔ ¬∃ x, x ∈ Aᶜ := by
     apply h
     exact ⟨x, h2⟩
 
-example : (∃ x, x ∈ A) ↔ ¬∀ x, x ∈ Aᶜ := by aesop
+example : (∃ x, x ∈ A) ↔ ¬∀ x, x ∈ Aᶜ := by aesop -- OK so I got lazy
+-- The `aesop` tactic is a general purpose tactic for goals like this.
