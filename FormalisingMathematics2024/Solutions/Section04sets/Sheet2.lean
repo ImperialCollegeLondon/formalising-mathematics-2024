@@ -5,14 +5,13 @@ Author : Kevin Buzzard
 -/
 import Mathlib.Tactic -- imports all the Lean tactics
 
-
 /-!
 
 # Sets in Lean, example sheet 2 : "the" empty set and the "universal set".
 
 Lean notation for the empty subset of `X` is `∅`. Unlike in
 set theory, there is more than one empty set in Lean! Every
-type has an empty subset, and it *doesn't make sense*
+type has an empty subset, and it *doesn't even make sense*
 to ask if `∅ : set ℕ` and `∅ : set ℤ` are equal, because
 they have different types.
 
