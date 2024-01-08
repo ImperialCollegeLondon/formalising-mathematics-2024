@@ -52,7 +52,7 @@ click "Code" and then "Codespaces" so it looks like this:
 
 Pic: ![codespaces installation](png/codespaces.png?raw=true "codespaces installation")
 
-Then click "create codespace on main", and then wait for a few minutes. When it looks like everything has downloaded, open up the `FormalisingMathematics2024` directory (not the file!) and you should see the directories where the exercises are.
+Then click on the `+` ("create codespace on main"), and then wait for a few minutes. When it looks like everything has downloaded, open up the `FormalisingMathematics2024` directory (not the file!) and you should see the directories where the exercises are.
 
 ## Course notes
 
