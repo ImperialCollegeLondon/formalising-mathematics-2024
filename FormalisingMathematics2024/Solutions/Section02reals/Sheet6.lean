@@ -6,7 +6,7 @@ Author : Kevin Buzzard
 import Mathlib.Tactic -- imports all the Lean tactics
 import FormalisingMathematics2024.Solutions.Section02reals.Sheet5 -- import a bunch of previous stuff
 
-namespace Section2sheet6
+namespace Section2sheet6Solutions
 
 open Section2sheet3solutions Section2sheet5solutions
 
@@ -177,4 +177,4 @@ theorem tendsTo_unique' (a : ℕ → ℝ) (s t : ℝ) (hs : TendsTo a s) (ht : T
   -- and the simplifier can now reduce that to the goal |t-s|<ε.
   simpa using hX
 
-end Section2sheet6
+end Section2sheet6Solutions

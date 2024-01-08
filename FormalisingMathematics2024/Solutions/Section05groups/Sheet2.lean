@@ -19,6 +19,8 @@ proving the other axioms?
 
 -/
 
+namespace Section5sheet2Solutions
+
 
 -- removing `mul_one` and `mul_inv_self` from the five standard axioms
 -- for a group.

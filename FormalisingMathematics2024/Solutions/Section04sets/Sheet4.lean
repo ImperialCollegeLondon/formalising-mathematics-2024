@@ -33,6 +33,8 @@ true, is `{ x : X | P x }`, and the proof that `a ∈ { x : X | P x } ↔ P a` i
 Let's check:
 -/
 
+namespace Section4sheet4Solutions
+
 theorem mem_def (X : Type) (P : X → Prop) (a : X) :
     a ∈ {x : X | P x} ↔ P a := by
   rfl
