@@ -2,15 +2,57 @@
 
 This is the repository for Kevin Buzzard's 2024 course on formalising mathematics in the Lean theorem prover. The course runs from January to March 2024. 
 
+Note: this course is written in Lean 4. Previous versions of this course were written in the (now end-of-life) Lean 3.
+
 ## Local installation
 
-If you have Lean 4 installed on your computer, then it's just a matter of cloning the repo from github. Instructions to follow.
+First you need to install Lean 4. Instructions for doing that are [here](https://leanprover-community.github.io/get_started.html#regular-install).
 
-Instructions for installing Lean 4 are [here](https://leanprover-community.github.io/get_started.html#regular-install).
+Then it's just a matter of cloning this repository from github onto your computer. One tried and tested way is via the command line. Fire up the same command line which you used to install Lean 4 and type this:
+
+```bash
+git clone git@github.com:ImperialCollegeLondon/formalising-mathematics-2024.git
+cd formalising-mathematics-2024
+lake exe cache get
+```
+
+Now open the folder `formalising-mathematics-2024` which you just created, using VS Code's "open folder" functionality. You will find all the exercises for the course inside a subdirectory called `FormalisingMathematics2024` (don't confuse these two
+directories! One has hyphens, the other does not).
+
+A newer way to install the repository is using VS Code directly. With Lean installed, click on the upside-down A
+
+![an upside-down A](png/clone_forall.png?raw=true "an upside-down A")
+
+and select `Open Project` -> `Project: Download Project`. Type in the following URL into the text box which appeared:
+
+```
+https://github.com/ImperialCollegeLondon/formalising-mathematics-2024
+```
+
+and then select the directory where you want the project installed, type in the name of a folder (for example formalising-mathematics-2024) and then wait for a minute or two while everything downloads and compiles. Then accept the suggestion to open the course directory, and you should be up and running. Open up VS Code's file explorer (it looks like this)
+
+![File explorer](png/file_explorer.png?raw=true "File explorer")
+
+and navigate to the `FormalisingMathematics2024` directory, where you should find a whole bunch of directories containing the exercises.
 
 ## Online play
 
-TODO: set up codespaces and gitpod.
+If you don't have the 4.5 gigabytes necessary to install all this, or if your computer is too slow to make the experience of using Lean on it fun (you'll need at least 8 gigs of ram, for example), then you can do the course exercises through a web browser (and you don't need to install anything onto your computer using this method).
+
+### Method 1: via Gitpod.
+
+Just click here: [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/ImperialCollegeLondon/formalising-mathematics-2024)
+
+
+
+### Method 2: via Codespaces
+
+Go to the project's [home page on GitHub](https://github.com/ImperialCollegeLondon/formalising-mathematics-2024),
+click "Code" and then "Codespaces" so it looks like this:
+
+Pic: ![codespaces installation](png/codespaces.png?raw=true "codespaces installation")
+
+Then click "create codespace on main", and then wait for a few minutes. When it looks like everything has downloaded, open up the `FormalisingMathematics2024` directory (not the file!) and you should see the directories where the exercises are.
 
 ## Course notes
 
