@@ -3,17 +3,16 @@ Copyright (c) 2022 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
-import Mathlib.Tactic.Default
-
+import Mathlib.Tactic -- import all the tactics
 
 /-!
 
 # Sets in Lean, sheet 5 : equality of sets
 
 Sets are extensional objects to mathematicians, which means that
-if two sets have the same elements, then they are equal. 
+if two sets have the same elements, then they are equal.
 
-## Tactics 
+## Tactics
 
 Tactics you will need to know for this sheet:
 
@@ -27,9 +26,6 @@ the goal to `x ∈ A ↔ x ∈ B`.
 
 -/
 
-
--- imports all the Lean tactics
--- imports all the Lean tactics
 open Set
 
 variable (X : Type)
@@ -54,15 +50,14 @@ example : A ∩ A = A :=
 example : A ∩ ∅ = ∅ := by
   ext x
   constructor
-  · rintro ⟨hx, ⟨⟩⟩
+  · rintro ⟨_, ⟨⟩⟩
   · rintro ⟨⟩
 
 example : A ∪ univ = univ := by simp
 
---set_option pp.notation false
 example : A ⊆ B → B ⊆ A → A = B :=
   by
-  -- library_search works
+  -- `exact?` works
   intro hAB hBA
   ext x
   exact ⟨@hAB x, @hBA x⟩
@@ -70,12 +65,11 @@ example : A ⊆ B → B ⊆ A → A = B :=
 example : A ∩ B = B ∩ A :=
   inter_comm A B
 
--- found with library_search
+-- found with `exact?`
 example : A ∩ (B ∩ C) = A ∩ B ∩ C := by
   symm
   exact inter_assoc A B C
 
--- I guessed the name!
 example : A ∪ (B ∪ C) = A ∪ B ∪ C := by
   ext x
   constructor
@@ -88,12 +82,11 @@ example : A ∪ (B ∪ C) = A ∪ B ∪ C := by
     · right; left; assumption
     · right; right; assumption
 
+-- thanks `exact?`
 example : A ∪ B ∩ C = (A ∪ B) ∩ (A ∪ C) :=
   union_distrib_left A B C
 
--- thanks library_search
+-- I guessed what this was called
+-- on the basis of the previous answer
 example : A ∩ (B ∪ C) = A ∩ B ∪ A ∩ C :=
   inter_distrib_left A B C
-
--- guessed what this
--- was called on basis of previous answer

@@ -3,17 +3,16 @@ Copyright (c) 2022 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
-import Mathlib.Tactic.Default
-
+import Mathlib.Tactic -- import all the tactics
 
 /-!
 
 # Sets in Lean, sheet 5 : equality of sets
 
 Sets are extensional objects to mathematicians, which means that
-if two sets have the same elements, then they are equal. 
+if two sets have the same elements, then they are equal.
 
-## Tactics 
+## Tactics
 
 Tactics you will need to know for this sheet:
 
@@ -27,9 +26,6 @@ the goal to `x ∈ A ↔ x ∈ B`.
 
 -/
 
-
--- imports all the Lean tactics
--- imports all the Lean tactics
 open Set
 
 variable (X : Type)
@@ -58,4 +54,3 @@ example : A ∪ (B ∪ C) = A ∪ B ∪ C := by sorry
 example : A ∪ B ∩ C = (A ∪ B) ∩ (A ∪ C) := by sorry
 
 example : A ∩ (B ∪ C) = A ∩ B ∪ A ∩ C := by sorry
-

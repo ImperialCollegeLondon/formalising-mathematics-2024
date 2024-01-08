@@ -11,7 +11,7 @@ import Mathlib.Tactic -- imports all the tactics
 
 This is a harder group theory question.
 
-It turns out that two of the axioms in our definition of a group
+It turns out that two of the axioms in the standard definition of a group
 are not needed; they can be deduced from the others. Let's define
 a "weak group" class, where we only have three of the group axioms.
 The question is: can you prove that a weak group is a group, by
@@ -29,11 +29,12 @@ class WeakGroup (G : Type) extends One G, Mul G, Inv G : Type where
 
 namespace WeakGroup
 
+-- Let `G` be a "weak group" and say a,b,c are in G
 variable {G : Type} [WeakGroup G] (a b c : G)
 
 /-
 
-The challenge is to prove that G is a group, which we can interpret as
+The (tricky) challenge is to prove that G is a group, which we can interpret as
 proving the missing axioms `mul_one` and `mul_inv_self`. Note that you
 can't use the `group` tactic any more because `G` isn't a group yet:
 this is what you're trying to prove!
@@ -79,7 +80,7 @@ end WeakGroup
 /-
 
 If you want to take this further: prove that if we make
-a new class `bad_group` by replacing
+a new class `BadGroup` by replacing
 `one_mul` by `mul_one` in the definition of `weak_group`
 then it is no longer true that you can prove `mul_inv_self`;
 there are structures which satisfy `mul_assoc`, `mul_one`
