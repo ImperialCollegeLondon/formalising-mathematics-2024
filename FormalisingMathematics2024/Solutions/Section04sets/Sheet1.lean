@@ -34,6 +34,9 @@ but it will always be a term of type `X`.
 
 -/
 
+namespace Section4sheet1Solutions
+
+
 -- set up variables
 variable (X : Type) -- Everything will be a subset of `X`
   (A B C D : Set X) -- A,B,C,D are subsets of `X`
