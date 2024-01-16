@@ -60,3 +60,23 @@ def bijection2 : ℚ ≃ ℚ where
     sorry
   right_inv := by
     sorry
+
+-- Note that these two terms are *not* equal.
+example : bijection1 ≠ bijection2 := by
+  -- replace `bijection1` and `bijection2` with their definitions
+  unfold bijection1 bijection2
+  -- assume for a contradiction that they're equal
+  intro h
+  -- simplify this mess
+  simp at h
+  -- `h` is now two false statements, let's just choose one
+  cases' h with h1 _
+  rw [Function.funext_iff] at h1
+  -- now choose any number a such that a ≠ 3a+4
+  specialize h1 37
+  -- and now h1 is all about numbers so use the number tactic
+  norm_num at h1
+
+-- On the other hand, every true-false statement in Lean has at most one proof,
+-- so `ℚ ≃ ℚ` can't be a true-false statement. It is in fact the set of bijections
+-- from `ℚ` to itself.
