@@ -83,8 +83,7 @@ theorem tendsTo_const (c : ℝ) : TendsTo (fun n ↦ c) c := by
 
 /-- If `a(n)` tends to `t` then `a(n) + c` tends to `t + c` -/
 theorem tendsTo_add_const {a : ℕ → ℝ} {t : ℝ} (c : ℝ) (h : TendsTo a t) :
-    TendsTo (fun n => a n + c) (t + c) :=
-  by
+    TendsTo (fun n => a n + c) (t + c) := by
   -- hints: make sure you know the maths proof!
   -- use `cases` to deconstruct an `exists`
   -- hypothesis, and `specialize` to specialize
@@ -104,4 +103,5 @@ example {a : ℕ → ℝ} {t : ℝ} (ha : TendsTo a t) : TendsTo (fun n => -a n)
 -- or |a - b| = |b - a| or something like that.
 -- Leave this for now and try sheet 4, where you'll learn how to discover these things.
 -- We'll come back to this example on sheet 5.
+
 end Section2sheet3
