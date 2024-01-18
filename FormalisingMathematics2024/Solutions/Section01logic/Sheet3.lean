@@ -13,7 +13,7 @@ We learn about how to manipulate `¬ P` in Lean.
 
 # The definition of `¬ P`
 
-In Lean, `¬ P` is *defined* to mean `P → false`. So `¬ P` and `P → false`
+In Lean, `¬ P` is *defined* to mean `P → False`. So `¬ P` and `P → False`
 are *definitionally equal*. Check out the explanation of definitional
 equality in the "equality" section of Part B of the course notes:
 https://www.ma.imperial.ac.uk/~buzzard/xena/formalising-mathematics-2023/Part_B/equality.html
