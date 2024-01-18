@@ -85,8 +85,8 @@ def f : X → ℕ
   | b => 42
   | c => 0
 
-example : f a = 37 := by-- true by definition
-  rfl
+example : f a = 37 := by
+  rfl -- true by definition
 
 -- Here is a proof that `f` is an injective function.
 -- At some point in this proof there are 9 goals; you can see them
