@@ -43,8 +43,7 @@ def bijection1 : ℚ ≃ ℚ where
   -- use the identity function from ℚ to ℚ
   invFun := id
   -- its inverse is also the identity function
-  left_inv :=
-    by
+  left_inv := by
     -- we have to prove ∀ q, id (id q) = q
     intro q
     rfl --- works because `id q` is definitionally equal to `q`.

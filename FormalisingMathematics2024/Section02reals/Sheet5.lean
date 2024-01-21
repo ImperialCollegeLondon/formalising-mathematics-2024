@@ -29,8 +29,7 @@ of the results we proved in sheet 4 will be helpful.
 /-- If `a(n)` tends to `t` and `b(n)` tends to `u` then `a(n) + b(n)`
 tends to `t + u`. -/
 theorem tendsTo_add {a b : ℕ → ℝ} {t u : ℝ} (ha : TendsTo a t) (hb : TendsTo b u) :
-    TendsTo (fun n ↦ a n + b n) (t + u) :=
-  by
+    TendsTo (fun n ↦ a n + b n) (t + u) := by
   rw [tendsTo_def] at *
   -- let ε > 0 be arbitrary
   intro ε hε

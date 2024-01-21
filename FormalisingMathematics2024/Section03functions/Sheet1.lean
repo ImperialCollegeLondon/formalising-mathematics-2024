@@ -82,8 +82,7 @@ example : Surjective (id : X → X) := by
 
 -- Theorem: if f : X → Y and g : Y → Z are injective,
 -- then so is g ∘ f
-example (f : X → Y) (g : Y → Z) (hf : Injective f) (hg : Injective g) : Injective (g ∘ f) :=
-  by
+example (f : X → Y) (g : Y → Z) (hf : Injective f) (hg : Injective g) : Injective (g ∘ f) := by
   -- By definition of injectivity,
   -- We need to show that if a,b are in X and
   -- (g∘f)(a)=(g∘f)(b), then a=b.
