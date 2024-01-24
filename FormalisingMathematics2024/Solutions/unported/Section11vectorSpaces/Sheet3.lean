@@ -83,6 +83,7 @@ example (X : Type) (k : Type) [Field k] (f g : X →₀ k) (c : k) : X →₀ k 
   c • f + g
 
 -- How do we access the support of `f`? i.e. what is the finite subset of `X` where `f`
--- is nonzero? If you try `by exact?` below you'll get `Finset.empty`, but we want
+-- is nonzero? If you try `by exact?` below you'll get `Finset.empty` (`exact?` is
+-- designed to prove theorems, not find definitions), but we want
 -- to definitely use `f` so try `by exact? using f` and you'll hopefully get the right answer.
 example (X : Type) (k : Type) [Field k] (f : X →₀ k) : Finset X := f.support -- hover to check!
