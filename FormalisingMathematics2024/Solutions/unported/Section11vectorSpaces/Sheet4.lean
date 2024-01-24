@@ -4,18 +4,12 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
 import Mathlib.Tactic
---import Mathlib.LinearAlgebra.Basis
---import Mathlib.LinearAlgebra.Matrix.ToLin
 
 /-!
 
-# Basis of a vector space
+# Bases and matrices
 
-Plan:
-
-1) If V,W are based vector spaces then matrices = linear maps
-
-2) change of basis
+Here is some API for bases of a vector space, and its relation to matrices.
 
 -/
 
