@@ -15,9 +15,8 @@ import Mathlib.MeasureTheory.MeasurableSpace.Defs
 
 -/
 
+namespace Section13Sheet2
 -- Intersection of sigma algebras is a sigma algebra
--- Intersection of sigma algebras is a sigma algebra
--- Let 𝓐 be a family of sigma algebras on a type `X`
 -- Let 𝓐 be a family of sigma algebras on a type `X`
 variable (X : Type) (I : Type) (𝓐 : I → MeasurableSpace X)
 
@@ -25,7 +24,11 @@ variable (X : Type) (I : Type) (𝓐 : I → MeasurableSpace X)
 open scoped MeasureTheory
 -- to get notation `MeasurableSet[S] U` for "U is in the sigma algebra S"
 
-example : MeasurableSpace X := sorry
+example : MeasurableSpace X where
+  MeasurableSet' U := ∀ i, MeasurableSet[𝓐 i] U
+  measurableSet_empty := sorry
+  measurableSet_compl := sorry
+  measurableSet_iUnion := sorry
 
 -- Lean knows that sigma algebras on X are a complete lattice
 -- so you could also make it like this:
@@ -39,3 +42,5 @@ example : MeasurableSpace X :=
 example (X : Type) [MeasurableSpace X]
     (f : ℕ → Set X) (hf : ∀ n, MeasurableSet (f n)) :
     MeasurableSet (⋂ n, f n) := sorry
+
+end Section13Sheet2

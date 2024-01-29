@@ -25,7 +25,9 @@ variable [IsPrincipalIdealRing R] [IsDomain R]
 
 -- Note that both of these are typeclasses, so various things should
 -- be automatic.
-example : ∀ a b : R, a * b = 0 → a = 0 ∨ b = 0 := sorry
+example : ∀ a b : R, a * b = 0 → a = 0 ∨ b = 0 := by
+  intro a b
+  apply eq_zero_or_eq_zero_of_mul_eq_zero
 
 -- typeclass inference
 -- magically extracts the assumption from `IsDomain`

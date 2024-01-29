@@ -37,6 +37,8 @@ Some helpful lemmas (all in the `Filter` namespace):
 
 -/
 
+namespace Section12Sheet2Solutions
+
 variable {α : Type}
 
 open Filter Set
@@ -143,3 +145,5 @@ example (I : Type) (F : I → Filter α) (G : Filter α) (hG : ∀ i, G ≤ F i)
   specialize hS ⟨G, _⟩
   · exact hG
   · exact hS
+
+end Section12Sheet2Solutions

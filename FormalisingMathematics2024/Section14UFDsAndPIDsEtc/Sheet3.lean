@@ -102,85 +102,28 @@ are chains of arbitrary length). The claim is that in a UFD,
 all height one primes are principal.
 
 -/
+
+namespace Section14Sheet3
+
 -- out of laziness we don't define height n primes in a general
 -- commutative ring but just height one primes in an integral
 -- domain
 /-- An ideal of an integral domain is a height one prime if it's prime, it's
 nonzero, and the only strictly smaller prime ideal is the zero ideal. -/
-def IsHeightOnePrime {R : Type} [CommRing R] [IsDomain R] (P : Ideal R) : Prop :=
+def IsHeightOnePrime
+    {R : Type} [CommRing R] [IsDomain R] (P : Ideal R) : Prop :=
   P.IsPrime ∧ P ≠ 0 ∧ ∀ Q : Ideal R, Q.IsPrime ∧ Q < P → Q = 0
-
-theorem Ideal.mem_iff_associated {R : Type} [CommRing R] (I : Ideal R) {a b : R}
-    (hab : Associated a b) : a ∈ I ↔ b ∈ I :=   by
-  rcases hab with ⟨u, rfl⟩
-  refine' ⟨I.mul_mem_right _, _⟩
-  intro h
-  convert I.mul_mem_right ((u⁻¹ : Rˣ) : R) h
-  simp
-
-theorem Ideal.IsPrime.not_one_mem {R : Type} [CommRing R] {P : Ideal R}
-    (hI : P.IsPrime) : (1 : R) ∉ P := by
-  intro h
-  apply hI.ne_top
-  rwa [Ideal.eq_top_iff_one]
-
-theorem Ideal.IsPrime.mem_of_prod_mem {R : Type} [CommRing R] {P : Ideal R}
-    (hP : P.IsPrime) {L : Multiset R} :
-    L.prod ∈ P → ∃ x : R, x ∈ L ∧ x ∈ P := by
-  refine L.induction_on ?_ ?_
-  · intro h
-    rw [Multiset.prod_zero] at h
-    cases hP.not_one_mem h
-  · intro a L IH h
-    simp only [Multiset.prod_cons] at h
-    rcases hP.mem_or_mem h with (ha | hL)
-    · exact ⟨a, by simp, ha⟩
-    · obtain ⟨x, hxL, hxP⟩ := IH hL
-      exact ⟨x, Multiset.mem_cons_of_mem hxL, hxP⟩
-
-theorem Prime.ideal_span_singleton_isPrime {R : Type} [CommRing R] {p : R}
-    (hp : Prime p) : (Ideal.span {p} : Ideal R).IsPrime := by
-  rwa [Ideal.span_singleton_prime]
-  exact hp.ne_zero
 
 -- All height one primes are principal in a UFD.
 example (R : Type) [CommRing R] [IsDomain R] [UniqueFactorizationMonoid R]
-    (P : Ideal R) : IsHeightOnePrime P → P.IsPrincipal := by
-  rintro ⟨hPprime, hPnonzero, hht1⟩
-  -- P is nonzero so choose nonzero x ∈ P
-  have hnonzero : ∃ x ∈ P, x ≠ (0 : R)
-  · by_contra! h
-    apply hPnonzero
-    ext x
-    simp only [Ideal.zero_eq_bot, Ideal.mem_bot]
-    refine' ⟨h x, _⟩
-    rintro rfl
-    apply zero_mem
-  -- Now factor x
-  rcases hnonzero with ⟨x, hxP, hx0⟩
-  -- let L be its list of prime factors (up to units)
-  obtain ⟨L, hLprime, hLx⟩ :=
-    UniqueFactorizationMonoid.exists_prime_factors x hx0
-  -- The product of the prime factors is in P
-  rw [← P.mem_iff_associated hLx] at hxP
-  -- so one of the prime factors (call it pᵢ) is in P
-  rcases hPprime.mem_of_prod_mem hxP with ⟨pi, hpiL, hpiP⟩
-  -- so (pᵢ) ⊆ P
-  have hpiP : Ideal.span {pi} ≤ P := by rwa [Ideal.span_singleton_le_iff_mem]
-  -- So either (pᵢ)=P or (pᵢ) ⊂ P
-  rw [le_iff_eq_or_lt] at hpiP
-  rcases hpiP with (rfl | hcontra)
-  · -- if (pᵢ)=P we're done
-    use pi
-    rfl
-  · -- and if not then pᵢ is prime
-    have hpiprime : Prime pi := hLprime pi hpiL
-    -- so the ideal (pᵢ) is prime
-    have hpi : (Ideal.span {pi}).IsPrime := hpiprime.ideal_span_singleton_isPrime
-    -- so by our height 1 assumption (pᵢ)=0
-    specialize hht1 _ ⟨hpi, hcontra⟩
-    change _ = ⊥ at hht1
-    -- which is a contradiction as pᵢ≠0
-    rw [Ideal.span_eq_bot] at hht1
-    specialize hht1 pi (Set.mem_singleton pi)
-    cases hpiprime.ne_zero hht1
+    (P : Ideal R) : IsHeightOnePrime P → P.IsPrincipal :=
+  /-
+    The maths proof: let P be a height 1 prime. Then P ≠ 0, so choose
+    nonzero x ∈ P. Factor x into irreducibles; by primality of P one
+    of these irreducible factors π must be in P. But now (π) ⊆ P,
+    and (π) is prime and nonzero, so by the height 1 assumption we
+    must have (π)=P.
+    -/
+  sorry
+
+end Section14Sheet3

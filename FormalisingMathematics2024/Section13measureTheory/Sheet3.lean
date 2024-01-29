@@ -25,6 +25,8 @@ scoped[ENNReal] notation "∞" => (⊤ : ENNReal)
 ```
 -/
 
+namespace Section13Sheet3
+
 open scoped ENNReal
 
 #check ENNReal
@@ -47,3 +49,5 @@ example : (0 : ℝ≥0∞) * ∞ = 0 := sorry
 example : (1 : ℝ≥0∞) / 0 = ∞ := sorry
 
 example (a b c : ℝ≥0∞) : (a + b) * c = a * c + b * c := sorry
+
+end Section13Sheet3

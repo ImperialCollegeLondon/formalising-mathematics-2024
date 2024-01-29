@@ -15,6 +15,9 @@ First let's showcase what mathlib has.
 
 Let `R` be a commutative ring.
 -/
+
+section Section14Sheet1Solutions
+
 variable (R : Type) [CommRing R]
 
 -- We say `R` is a *principal ideal ring* if all ideals are principal.
@@ -46,6 +49,33 @@ example (I : Ideal R) : ∃ j, I = Ideal.span {j} := by
   -- to get this proof out.
   obtain ⟨h⟩ := IsPrincipalIdealRing.principal I
   exact h
+
+-- Typeclass inference knows a bunch of theorems about PIDs and which things are PIDs.
+-- Examples:
+-- integers are a PID
+example : IsPrincipalIdealRing ℤ :=
+  EuclideanDomain.to_principal_ideal_domain
+
+-- just check the domain bit:
+example : IsDomain ℤ := by infer_instance
+
+-- a field is a PID
+example (k : Type) [Field k] : IsPrincipalIdealRing k := by infer_instance
+
+example (k : Type) [Field k] : IsDomain k := by infer_instance
+
+open scoped Polynomial
+
+-- to get `k[X]` notation instead of `polynomial k`
+-- polys over a field are a PID
+example (k : Type) [Field k] : IsPrincipalIdealRing k[X] := by infer_instance
+
+example (k : Type) [Field k] : IsDomain k[X] := by infer_instance
+
+-- if all ideals of a ring are principal then the ring is a principal ideal ring
+example (A : Type) [CommRing A] (h : ∀ I : Ideal A, I.IsPrincipal) :
+    IsPrincipalIdealRing A where
+  principal := h
 
 -- product of two PIDs isn't a PID, but only becuase it's not a domain
 example (A B : Type) [CommRing A] [CommRing B]
@@ -84,3 +114,5 @@ example (A B : Type) [CommRing A] [CommRing B]
         convert I.add_mem (I.mul_mem_left (1, 0) haI) (I.mul_mem_left (0, 1) hbI) <;> simp
       · intro b; use (0, b); rfl
       · intro a; use (a, 0); rfl
+
+end Section14Sheet1Solutions

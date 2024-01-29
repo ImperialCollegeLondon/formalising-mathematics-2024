@@ -47,6 +47,8 @@ is measurable. This coincides with Lean's "make functions total" philosophy (the
 
 -/
 
+section Section13Sheet3
+
 open Filter
 
 open scoped NNReal ENNReal MeasureTheory BigOperators Topology
@@ -270,3 +272,5 @@ a set of full measure. Thus, it suffices to work in their intersection instead.
 Now, try the above examples again using the `filter_upwards` tactic.
 -/
 end MeasureTheory
+
+end Section13Sheet3

@@ -28,6 +28,8 @@ Recall that `max x y` is the max of x and y in a `LinearOrder`, and
 `le_max_left a b : a ≤ max a b` and similarly `le_max_right`.
 -/
 
+namespace Section12Sheet3Solutions
+
 open Set
 
 def atTop (L : Type) [LinearOrder L] (e : L) : Filter L where
@@ -107,3 +109,5 @@ If you like this filter stuff, then formalise in Lean and prove the following:
 (4) Prove that the cofinite filter on `ℕ` is not principal.
 
 -/
+
+end Section12Sheet3Solutions

@@ -6,6 +6,7 @@ Author : Kevin Buzzard
 import Mathlib.Tactic
 -- imports all the Lean tactics
 import Mathlib.MeasureTheory.MeasurableSpace.Defs
+
 /-
 
 # The extended nonnegative reals [0,∞]
@@ -24,6 +25,8 @@ scoped[ENNReal] notation "ℝ≥0∞" => ENNReal
 scoped[ENNReal] notation "∞" => (⊤ : ENNReal)
 ```
 -/
+
+section Section13Sheet3Solutions
 
 open scoped ENNReal
 
@@ -47,3 +50,5 @@ example : (0 : ℝ≥0∞) * ∞ = 0 := by norm_num
 example : (1 : ℝ≥0∞) / 0 = ∞ := by simp
 
 example (a b c : ℝ≥0∞) : (a + b) * c = a * c + b * c := by ring
+
+end Section13Sheet3Solutions

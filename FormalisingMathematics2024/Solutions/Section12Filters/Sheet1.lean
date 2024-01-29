@@ -7,7 +7,6 @@ import Mathlib.Tactic
 -- imports all the Lean tactics
 import Mathlib.Order.Filter.Basic
 
-
 /-!
 
 # Filters
@@ -85,6 +84,8 @@ stuff about sets, like `Set.inter_subset_left`, so why don't we `open Set`
 as well.
 -/
 
+section Section12Sheet1Solutions
+
 open Filter Set
 
 -- Variables!
@@ -154,3 +155,5 @@ example (X : Set α) : Filter α :=
 -- of saying that you have to type
 open scoped Filter
 -- in order to get the notation.
+
+end Section12Sheet1Solutions

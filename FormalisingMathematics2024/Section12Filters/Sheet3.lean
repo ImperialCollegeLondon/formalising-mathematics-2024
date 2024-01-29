@@ -7,7 +7,6 @@ import Mathlib.Tactic
 -- imports all the Lean tactics
 import Mathlib.Order.Filter.Basic
 
-
 /-!
 
 # Examples of filters
@@ -28,32 +27,15 @@ Recall that `max x y` is the max of x and y in a `LinearOrder`, and
 `le_max_left a b : a ≤ max a b` and similarly `le_max_right`.
 -/
 
+namespace Section12sheet3
+
 open Set
 
 def atTop (L : Type) [LinearOrder L] (e : L) : Filter L where
   sets := {X : Set L | ∃ x : L, ∀ y, x ≤ y → y ∈ X}
-  univ_sets := by
-    use e
-    intro y hy
-    exact mem_univ y
-  sets_of_superset := by
-    rintro X Y ⟨x, hX⟩ hXY
-    --rw mem_set_of_eq,
-    use x
-    intro y hxy
-    --rw subset_def at hXY,
-    apply hXY
-    exact hX _ hxy
-  inter_sets := by
-    rintro X Y ⟨x, hX⟩ ⟨y, hY⟩
-    use max x y
-    intro z hz
-    constructor
-    · apply hX
-      apply le_trans _ hz
-      exact le_max_left x y
-    · exact hY _ (le_trans (le_max_right _ _) hz)
-
+  univ_sets := sorry
+  sets_of_superset := sorry
+  inter_sets := sorry
 /-
 
 ## the cofinite filter
@@ -80,20 +62,9 @@ that you can probably guess them yourself.
 -/
 def cofinite (α : Type) : Filter α where
   sets := {S : Set α | Sᶜ.Finite}
-  univ_sets := by
-    rw [mem_setOf_eq]
-    rw [compl_univ]
-    exact finite_empty
-  sets_of_superset := by
-    intro S T hS hST
-    rw [mem_setOf_eq] at hS ⊢
-    rw [← compl_subset_compl] at hST
-    exact Finite.subset hS hST
-  inter_sets := by
-    intro S T hS hT
-    rw [mem_setOf_eq] at *
-    rw [compl_inter]
-    exact Finite.union hS hT
+  univ_sets := sorry
+  sets_of_superset := sorry
+  inter_sets := sorry
 
 /-
 
@@ -107,3 +78,5 @@ If you like this filter stuff, then formalise in Lean and prove the following:
 (4) Prove that the cofinite filter on `ℕ` is not principal.
 
 -/
+
+end Section12sheet3

@@ -3,32 +3,26 @@ Copyright (c) 2023 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
-import Mathlib.Tactic.Default
-
+import Mathlib.Tactic
 
 /-
 
-# Prove that for every positive integer n the number 3(1^5 +2^5 +...+n^5)
-# is divisible by 1^3+2^3+...+n^3
+# Prove that for every positive integer n the number 3 × (1⁵ +2⁵ +...+n⁵)
+# is divisible by 1³+2³+...+n³
 
 This is question 9 in Sierpinski's book
 
 -/
-/-
 
-# Prove that for every positive integer n the number 3(1^5 +2^5 +...+n^5)
-# is divisible by 1^3+2^3+...+n^3
+namespace Section15Sheet7Solutions
 
-This is question 9 in Sierpinski's book
-
--/
 open scoped BigOperators
 
 open Finset
 
 -- I knew this one
-theorem sum_cubes (n : ℕ) : ∑ i in range n, (i : ℚ) ^ 3 = (n * (n - 1) / 2) ^ 2 :=
-  by
+theorem sum_cubes (n : ℕ) :
+    ∑ i in range n, ((i : ℚ) ^ 3 : ℚ) = (n * (n - 1) / 2) ^ 2 := by
   induction' n with d hd
   · simp
   · rw [Finset.sum_range_succ, hd]
@@ -37,8 +31,8 @@ theorem sum_cubes (n : ℕ) : ∑ i in range n, (i : ℚ) ^ 3 = (n * (n - 1) / 2
 
 -- I looked this one up on Wikipedia
 theorem sum_fifths (n : ℕ) :
-    ∑ i in range n, (i : ℚ) ^ 5 = (4 * (n * (n - 1) / 2) ^ 3 - (n * (n - 1) / 2) ^ 2) / 3 :=
-  by
+    ∑ i in range n, ((i : ℚ) ^ 5 : ℚ) =
+    (4 * (n * (n - 1) / 2) ^ 3 - (n * (n - 1) / 2) ^ 2) / 3 := by
   induction' n with d hd
   · simp
   · rw [Finset.sum_range_succ, hd]
@@ -56,3 +50,4 @@ example (n : ℕ) : ∑ i in range n, i ^ 3 ∣ 3 * ∑ i in range n, i ^ 5 :=
   rw [sum_fifths]
   ring
 
+end Section15Sheet7Solutions

@@ -17,6 +17,8 @@ to undergraduates. First things first: here's how to say "let R be a Euclidean d
 
 -/
 
+section Section14Sheet2
+
 variable (R : Type) [EuclideanDomain R]
 
 /-
@@ -25,6 +27,7 @@ And there's various theorems (all known by the typeclass inference system) about
 Euclidean domains:
 
 -/
+
 example : EuclideanDomain ℤ := by infer_instance
 
 open scoped Polynomial
@@ -73,39 +76,16 @@ noncomputable example (R : Type) [CommRing R] [IsDomain R] (φ : R → ℕ)
   let φ' : R → ℕ := fun r => if r = 0 then 0 else 1 + φ r
   have h' (a b : R) : ∃ q r : R,
     a = b * q + r ∧ (b = 0 ∧ q = 0 ∧ r = a ∨ b ≠ 0 ∧ φ' r < φ' b)
-  · by_cases hb : b = 0
-    · refine ⟨0, a, ?_, ?_⟩ <;> aesop
-    · rcases h a b hb with ⟨q, r, h1, h2⟩
-      refine ⟨q, r, h1, Or.inr ⟨hb, ?_⟩⟩
-      aesop
+  · sorry
   choose quot rem h'' using h'
   exact
     { quotient := quot
-      quotient_zero := by
-        intro a
-        rcases h'' a 0 with ⟨-, ⟨-, h1, -⟩ | ⟨h1, -⟩⟩ <;>
-        aesop
+      quotient_zero := sorry
       remainder := rem
-      quotient_mul_add_remainder_eq := by
-        intro a b
-        rw [← (h'' a b).1]
+      quotient_mul_add_remainder_eq := sorry
       r := fun a b => φ' a < φ' b
-      r_wellFounded := by
-        apply InvImage.wf
-        exact IsWellFounded.wf
-      remainder_lt := by
-        intro a b hb
-        rcases h'' a b with ⟨-, ⟨h2, -⟩ | h3⟩
-        · contradiction
-        exact h3.2
-      mul_left_not_lt := by
-        intro a b hb
-        push_neg
-        by_cases ha : a = 0
-        · simp [φ']
-          subst ha
-          simp
-        · specialize h0 a b ha hb
-          simp [φ']
-          rw [if_neg ha, if_neg (by aesop)]
-          linarith }
+      r_wellFounded := sorry
+      remainder_lt := sorry
+      mul_left_not_lt := sorry }
+
+end Section14Sheet2

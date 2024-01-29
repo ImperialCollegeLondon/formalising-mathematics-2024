@@ -15,9 +15,9 @@ import Mathlib.MeasureTheory.MeasurableSpace.Defs
 
 -/
 
+namespace Section13Sheet2Solutions
+
 -- Intersection of sigma algebras is a sigma algebra
--- Intersection of sigma algebras is a sigma algebra
--- Let 𝓐 be a family of sigma algebras on a type `X`
 -- Let 𝓐 be a family of sigma algebras on a type `X`
 variable (X : Type) (I : Type) (𝓐 : I → MeasurableSpace X)
 
@@ -58,3 +58,5 @@ example (X : Type) [MeasurableSpace X]
   intro b
   apply MeasurableSet.compl
   apply hf
+
+end Section13Sheet2Solutions

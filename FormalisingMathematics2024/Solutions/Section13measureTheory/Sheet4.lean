@@ -51,6 +51,8 @@ open Filter
 
 open scoped NNReal ENNReal MeasureTheory BigOperators Topology
 
+section Section13Sheet4Solutions
+
 -- note to self: removed `probability_theory`
 namespace MeasureTheory
 
@@ -318,3 +320,5 @@ a set of full measure. Thus, it suffices to work in their intersection instead.
 Now, try the above examples again using the `filter_upwards` tactic.
 -/
 end MeasureTheory
+
+end Section13Sheet4Solutions

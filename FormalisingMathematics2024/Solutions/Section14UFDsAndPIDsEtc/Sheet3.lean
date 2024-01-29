@@ -102,30 +102,24 @@ are chains of arbitrary length). The claim is that in a UFD,
 all height one primes are principal.
 
 -/
--- out of laziness we don't define height n primes in a general
--- commutative ring but just height one primes in an integral
--- domain
-/-- An ideal of an integral domain is a height one prime if it's prime, it's
-nonzero, and the only strictly smaller prime ideal is the zero ideal. -/
-def IsHeightOnePrime {R : Type} [CommRing R] [IsDomain R] (P : Ideal R) : Prop :=
-  P.IsPrime ∧ P ≠ 0 ∧ ∀ Q : Ideal R, Q.IsPrime ∧ Q < P → Q = 0
 
 theorem Ideal.mem_iff_associated {R : Type} [CommRing R] (I : Ideal R) {a b : R}
-    (hab : Associated a b) : a ∈ I ↔ b ∈ I :=   by
+    (hab : Associated a b) : a ∈ I ↔ b ∈ I := by
   rcases hab with ⟨u, rfl⟩
   refine' ⟨I.mul_mem_right _, _⟩
   intro h
   convert I.mul_mem_right ((u⁻¹ : Rˣ) : R) h
   simp
 
-theorem Ideal.IsPrime.not_one_mem {R : Type} [CommRing R] {P : Ideal R}
-    (hI : P.IsPrime) : (1 : R) ∉ P := by
+theorem Ideal.IsPrime.not_one_mem
+    {R : Type} [CommRing R] {P : Ideal R} (hI : P.IsPrime) :
+    (1 : R) ∉ P := by
   intro h
   apply hI.ne_top
   rwa [Ideal.eq_top_iff_one]
 
-theorem Ideal.IsPrime.mem_of_prod_mem {R : Type} [CommRing R] {P : Ideal R}
-    (hP : P.IsPrime) {L : Multiset R} :
+theorem Ideal.IsPrime.mem_of_prod_mem
+    {R : Type} [CommRing R] {P : Ideal R} (hP : P.IsPrime) {L : Multiset R} :
     L.prod ∈ P → ∃ x : R, x ∈ L ∧ x ∈ P := by
   refine L.induction_on ?_ ?_
   · intro h
@@ -138,10 +132,22 @@ theorem Ideal.IsPrime.mem_of_prod_mem {R : Type} [CommRing R] {P : Ideal R}
     · obtain ⟨x, hxL, hxP⟩ := IH hL
       exact ⟨x, Multiset.mem_cons_of_mem hxL, hxP⟩
 
-theorem Prime.ideal_span_singleton_isPrime {R : Type} [CommRing R] {p : R}
-    (hp : Prime p) : (Ideal.span {p} : Ideal R).IsPrime := by
+theorem Prime.ideal_span_singleton_isPrime
+    {R : Type} [CommRing R] {p : R} (hp : Prime p) :
+    (Ideal.span {p} : Ideal R).IsPrime := by
   rwa [Ideal.span_singleton_prime]
   exact hp.ne_zero
+
+namespace Section14Sheet3Solutions
+
+-- out of laziness we don't define height n primes in a general
+-- commutative ring but just height one primes in an integral
+-- domain
+/-- An ideal of an integral domain is a height one prime if it's prime, it's
+nonzero, and the only strictly smaller prime ideal is the zero ideal. -/
+def IsHeightOnePrime
+    {R : Type} [CommRing R] [IsDomain R] (P : Ideal R) : Prop :=
+  P.IsPrime ∧ P ≠ 0 ∧ ∀ Q : Ideal R, Q.IsPrime ∧ Q < P → Q = 0
 
 -- All height one primes are principal in a UFD.
 example (R : Type) [CommRing R] [IsDomain R] [UniqueFactorizationMonoid R]
@@ -163,24 +169,27 @@ example (R : Type) [CommRing R] [IsDomain R] [UniqueFactorizationMonoid R]
     UniqueFactorizationMonoid.exists_prime_factors x hx0
   -- The product of the prime factors is in P
   rw [← P.mem_iff_associated hLx] at hxP
-  -- so one of the prime factors (call it pᵢ) is in P
+  -- so one of the prime factors (call it pi) is in P
   rcases hPprime.mem_of_prod_mem hxP with ⟨pi, hpiL, hpiP⟩
-  -- so (pᵢ) ⊆ P
+  -- so (pi) ⊆ P
   have hpiP : Ideal.span {pi} ≤ P := by rwa [Ideal.span_singleton_le_iff_mem]
-  -- So either (pᵢ)=P or (pᵢ) ⊂ P
+  -- So either (pi)=P or (pi) ⊂ P
   rw [le_iff_eq_or_lt] at hpiP
   rcases hpiP with (rfl | hcontra)
-  · -- if (pᵢ)=P we're done
+  · -- if (pi)=P we're done
     use pi
     rfl
-  · -- and if not then pᵢ is prime
+  · -- and if not then pi is prime
     have hpiprime : Prime pi := hLprime pi hpiL
-    -- so the ideal (pᵢ) is prime
-    have hpi : (Ideal.span {pi}).IsPrime := hpiprime.ideal_span_singleton_isPrime
-    -- so by our height 1 assumption (pᵢ)=0
+    -- so the ideal (pi) is prime
+    have hpi : (Ideal.span {pi}).IsPrime :=
+      hpiprime.ideal_span_singleton_isPrime
+    -- so by our height 1 assumption (pi)=0
     specialize hht1 _ ⟨hpi, hcontra⟩
     change _ = ⊥ at hht1
-    -- which is a contradiction as pᵢ≠0
+    -- which is a contradiction as pi≠0
     rw [Ideal.span_eq_bot] at hht1
     specialize hht1 pi (Set.mem_singleton pi)
     cases hpiprime.ne_zero hht1
+
+end Section14Sheet3Solutions

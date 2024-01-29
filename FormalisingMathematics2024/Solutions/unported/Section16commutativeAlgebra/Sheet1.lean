@@ -3,8 +3,8 @@ Copyright (c) 2023 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
-import Mathlib.Tactic.Default
-import RingTheory.Noetherian
+import Mathlib.Tactic
+import Mathlib.RingTheory.Noetherian
 
 
 -- theory of Noetherian rings
@@ -75,7 +75,7 @@ example (R : Type) [CommRing R] [IsNoetherianRing R] (φ : R →+* R) (hφsurj :
     simp only [K, RingHom.mem_ker] at hx ⊢
     -- so φⁿ⁺¹(x) = φ(0)=0
     apply_fun φ at hx ;
-    rw [RingHom.map_zero] at hx 
+    rw [RingHom.map_zero] at hx
     -- so x ∈ Kₙ₊₁
     exact hx
   -- Hence K is a monotone function.
@@ -101,13 +101,12 @@ example (R : Type) [CommRing R] [IsNoetherianRing R] (φ : R →+* R) (hφsurj :
   -- so r = φ^n r' for some r' ∈ R
   rcases hφmsurj n r with ⟨r', rfl⟩
   -- Thus 0 = φ(r)=φ^{n+1}(r')
-  rw [RingHom.mem_ker] at hr 
-  change (φ ^ (n + 1) : R →+* R) r' = 0 at hr 
+  rw [RingHom.mem_ker] at hr
+  change (φ ^ (n + 1) : R →+* R) r' = 0 at hr
   -- Therefore r' ∈ ker(φ^{n+1})
   rw [← RingHom.mem_ker] at hr ⊢
-  change r' ∈ K (n + 1) at hr 
+  change r' ∈ K (n + 1) at hr
   -- ...=ker(φ^n)
-  rw [show K (n + 1) = K n from (hn (n + 1) (by linarith)).symm] at hr 
+  rw [show K (n + 1) = K n from (hn (n + 1) (by linarith)).symm] at hr
   -- and hence r=φ^n(r')=0 as required
   exact hr
-

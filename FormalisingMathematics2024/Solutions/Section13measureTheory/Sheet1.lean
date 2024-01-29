@@ -18,6 +18,8 @@ axioms, and in Lean you write it like this:
 
 -/
 
+namespace Section13Sheet1Solutions
+
 -- let X be a set
 variable (X : Type)
 
@@ -138,3 +140,5 @@ example (A : Set X) :
     · rw [show (Set.univ : Set X) = ∅ᶜ by simp]
       apply MeasurableSpace.GenerateMeasurable.compl
       apply MeasurableSpace.GenerateMeasurable.empty
+
+end Section13Sheet1Solutions

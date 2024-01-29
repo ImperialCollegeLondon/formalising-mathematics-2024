@@ -7,7 +7,6 @@ import Mathlib.Tactic
 -- imports all the Lean tactics
 import Mathlib.Order.Filter.Basic
 
-
 /-!
 
 # The order (≤) on filters
@@ -37,6 +36,8 @@ Some helpful lemmas (all in the `Filter` namespace):
 
 -/
 
+namespace Section12sheet2
+
 variable {α : Type}
 
 open Filter Set
@@ -60,7 +61,11 @@ First I claim that if Fᵢ are a bunch of filters, indexed by `i : I`, then
 the intersection of `Fᵢ.sets` is also a filter. Let's check this.
 
 -/
-def lub {I : Type} (F : I → Filter α) : Filter α := sorry
+def lub {I : Type} (F : I → Filter α) : Filter α where
+  sets := {X | ∀ i, X ∈ F i}
+  univ_sets := sorry
+  sets_of_superset := sorry
+  inter_sets := sorry
 
 /-
 
@@ -88,7 +93,8 @@ This gives us a definition of greatest lower bound for filters too.
 -/
 -- greatest lower bound of filters Fᵢ is the least upper bound of the filters G whose `sets`
 -- contain all of the `Fᵢ.sets`
-def glb {I : Type} (F : I → Filter α) : Filter α := sorry
+def glb {I : Type} (F : I → Filter α) : Filter α :=
+  lub fun G : {G : Filter α | ∀ i, (F i).sets ⊆ G.sets} ↦ G.1
 
 -- it's a lower bound
 example (I : Type) (F : I → Filter α) (i : I) : glb F ≤ F i := sorry
@@ -96,3 +102,5 @@ example (I : Type) (F : I → Filter α) (i : I) : glb F ≤ F i := sorry
 -- it's ≥ all other lower bounds
 example (I : Type) (F : I → Filter α) (G : Filter α) (hG : ∀ i, G ≤ F i) :
     G ≤ glb F := sorry
+
+end Section12sheet2
