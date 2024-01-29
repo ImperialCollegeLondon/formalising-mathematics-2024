@@ -3,40 +3,24 @@ Copyright (c) 2023 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
-import Mathlib.Tactic.Default
-import Analysis.NormedSpace.LpSpace
-
-
--- theory of ℓᵖ spaces
+import Mathlib.Tactic
+import Mathlib.Analysis.NormedSpace.lpSpace
 -- theory of ℓᵖ spaces
 /-
 
 # ℓᵖ spaces
 
-The set-up : `I` is an index type, `E` is a family of `normed_add_comm_group`s
+The set-up : `I` is an index type, `E` is a family of `NormedAddCommGroup`s
 (so if `i : I` then `E i` is a type and if `v : E i` then `‖v‖` makes sense and
 is a real number).
 
 Then given `p : ℝ≥0∞` (i.e. an element `p` of `[0,∞]`) there is a theory
-of ℓᵖ spaces, which is the subspace of `∏ᵢ, E i` consisting of the
+of ℓᵖ spaces, which is the subspace of `Π i, E i` (the product) consisting of the
 sections `vᵢ` such that `∑ᵢ ‖vᵢ‖ᵖ < ∞`. For `p=∞` this means "the ‖vᵢ‖ are
 bounded".
 
 -/
-/-
 
-# ℓᵖ spaces
-
-The set-up : `I` is an index type, `E` is a family of `normed_add_comm_group`s
-(so if `i : I` then `E i` is a type and if `v : E i` then `‖v‖` makes sense and
-is a real number).
-
-Then given `p : ℝ≥0∞` (i.e. an element `p` of `[0,∞]`) there is a theory
-of ℓᵖ spaces, which is the subspace of `∏ᵢ, E i` consisting of the
-sections `vᵢ` such that `∑ᵢ ‖vᵢ‖ᵖ < ∞`. For `p=∞` this means "the ‖vᵢ‖ are
-bounded".
-
--/
 open scoped ENNReal
 
 -- to get notation ℝ≥0∞
@@ -55,8 +39,8 @@ example : Memℓp v 0 ↔ Set.Finite {i | v i ≠ 0} :=
 example : Memℓp v ∞ ↔ BddAbove (Set.range fun i => ‖v i‖) :=
   memℓp_infty_iff
 
--- The function ennreal.to_real sends x<∞ to x and ∞ to 0. 
--- So `0 < p.to_real` is a way of saying `0 < p < ∞`.
+-- The function ENNReal.toReal sends x<∞ to x and ∞ to 0.
+-- So `0 < p.toReal` is a way of saying `0 < p < ∞`.
 example (hp : 0 < p.toReal) : Memℓp v p ↔ Summable fun i => ‖v i‖ ^ p.toReal :=
   memℓp_gen_iff hp
 
@@ -75,31 +59,26 @@ example : Type :=
 noncomputable example (v : lp E p) : ℝ :=
   ‖v‖
 
--- It's a `normed_add_comm_group` if `1 ≤ p`
-noncomputable example [Fact (1 ≤ p)] : NormedAddCommGroup (lp E p) := by infer_instance
+-- It's a `NormedAddCommGroup` if `1 ≤ p` but I've not stated this correctly.
+noncomputable example (h : 1 ≤ p) : NormedAddCommGroup (lp E p) := by sorry
 
--- Typeclass inference can't see 1 ≤ p unless we 
--- use the `fact` typeclass (a way of putting arbitrary facts)
--- into the system
--- `real.is_conjugate_exponent p q` means that `p,q>1` are reals and `1/p+1/q=1`
+-- `Real.IsConjugateExponent p q` means that `p,q>1` are reals and `1/p+1/q=1`
 example (p q : ℝ) (hp : 1 < p) (hq : 1 < q) (hpq : 1 / p + 1 / q = 1) : p.IsConjugateExponent q :=
-  { one_lt := hp
-    inv_add_inv_conj := hpq }
+  sorry
 
--- note that `hq` not needed as it follows
+-- it's a structure
 -- We have a verison of Hoelder's inequality.
-#check @lp.tsum_mul_le_mul_norm
-
-example (q : ℝ≥0∞) (hpq : p.toReal.IsConjugateExponent q.toReal) (f : lp E p) (g : lp E q) :
+example (q : ℝ≥0∞)  (hpq : p.toReal.IsConjugateExponent q.toReal)
+    (f : lp E p) (g : lp E q) :
     ∑' i : I, ‖f i‖ * ‖g i‖ ≤ ‖f‖ * ‖g‖ :=
   haveI := lp.tsum_mul_le_mul_norm hpq f g
   this.2
 
 -- This would be a useless theorem if `∑' (i : I), ‖f i‖ * ‖g i‖` diverged,
--- because in Lean if a sum diverges then by definition the `∑'` of it is 0. 
+-- because in Lean if a sum diverges then by definition the `∑'` of it is 0.
 -- So we also need this:
-example (q : ℝ≥0∞) (hpq : p.toReal.IsConjugateExponent q.toReal) (f : lp E p) (g : lp E q) :
+example (q : ℝ≥0∞) (hpq : p.toReal.IsConjugateExponent q.toReal)
+    (f : lp E p) (g : lp E q) :
     Summable fun i => ‖f i‖ * ‖g i‖ :=
   haveI := lp.tsum_mul_le_mul_norm hpq f g
   this.1
-

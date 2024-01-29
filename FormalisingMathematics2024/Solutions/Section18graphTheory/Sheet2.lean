@@ -3,37 +3,10 @@ Copyright (c) 2023 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
-import Mathlib.Tactic.Default
-import Combinatorics.SimpleGraph.Connectivity
-
-
+import Mathlib.Tactic
+import Mathlib.Combinatorics.SimpleGraph.Connectivity
 -- paths, cycles etc in graph theory
--- paths, cycles etc in graph theory
-/-
 
-Cut and pasted directly from the module docstring from the file imported above:
-
-# Graph connectivity
-
-In a simple graph,
-
-* A *walk* is a finite sequence of adjacent vertices, and can be
-  thought of equally well as a sequence of directed edges.
-
-* A *trail* is a walk whose edges each appear no more than once.
-
-* A *path* is a trail whose vertices appear no more than once.
-
-* A *cycle* is a nonempty trail whose first and last vertices are the
-  same and whose vertices except for the first appear no more than once.
-
-(and then there's a warning that in topology some of these words are
-used to mean different things)
-
-So of course the question is how to actually do this in Lean. Here's how.
-Let `G` be a simple graph with vertex set `V`, and say `v,w,x` in `V`
-
--/
 /-
 
 Cut and pasted directly from the module docstring from the file imported above:
@@ -69,7 +42,7 @@ example : Type :=
 example : G.Walk v v :=
   SimpleGraph.Walk.nil' v
 
--- oh that's a bit annoying, let's open `simple_graph`
+-- oh that's a bit annoying, let's open `SimpleGraph`
 open SimpleGraph
 
 example : G.Walk v v :=
@@ -139,12 +112,43 @@ example (b : G.Walk v v) : Prop :=
   b.IsCycle
 
 -- Exercise : give an example of a circuit which isn't a cycle. Can you do it in Lean?
--- Remark: a Lean solution is in the solutions.
+@[reducible]
+def g5 : SimpleGraph (Fin 5) :=
+  completeGraph _
+
+instance : DecidableRel g5.Adj := SimpleGraph.Top.adjDecidable _
+
+theorem e10 : g5.Adj 1 0 := by decide
+
+theorem e21 : g5.Adj 2 1 := by decide
+
+theorem e02 : g5.Adj 0 2 := by decide
+
+theorem e30 : g5.Adj 3 0 := by decide
+
+theorem e43 : g5.Adj 4 3 := by decide
+
+theorem e04 : g5.Adj 0 4 := by decide
+
+def a5 : g5.Walk 0 0 :=
+  ((((((Walk.nil' 0).cons e10).cons e21).cons e02).cons e30).cons e43).cons e04
+
+example : a5.IsCircuit :=
+  { edges_nodup := by decide
+    ne_nil := by rintro ⟨⟩ }
+
+example : ¬a5.IsCycle := by
+  rintro ⟨-, h⟩
+  revert h
+  refine' @List.Duplicate.not_nodup _ _ 0 _
+  simp [a5]
+  decide
+
 -- Example theorem in the API: given a walk `p` from `v` to `u` and an edge from `u` to `v`,
 -- putting them together gives a cycle iff `p` is a path and the edge from `u` to `v`
 -- is not in the edges of `p`.
 example {u v : V} (p : G.Walk v u) (h : G.Adj u v) :
-    (Walk.cons h p).IsCycle ↔ p.IsPath ∧ ¬⟦(u, v)⟧ ∈ p.edges :=
+    (Walk.cons h p).IsCycle ↔ p.IsPath ∧ Sym2.mk (u, v) ∉ p.edges :=
   Walk.cons_isCycle_iff p h
 
 -- Given a walk from `v` to `w` and a vertex `u` in the support of the walk,
@@ -167,15 +171,22 @@ example (a : G.Walk v w) (u : V) (hu : u ∈ a.support) :
     (a.takeUntil u hu).append (a.dropUntil u hu) = a :=
   Walk.take_spec a hu
 
--- Two vertices `u` and `v` satisfy `G.reachable u v : Prop` if there's a walk from `u` to `v`.
+-- Two vertices `u` and `v` satisfy `G.Reachable u v : Prop` if there's a walk from `u` to `v`.
 example : G.Reachable v w ↔ Nonempty (G.Walk v w) :=
   Iff.rfl
 
 -- true by definition
--- Can you show that `G.reachable` is an equivalence relation?
-example : Equivalence G.Reachable := by sorry
+-- Can you show that `G.Reachable` is an equivalence relation?
+example : Equivalence G.Reachable := by
+  refine' ⟨_, _, _⟩
+  · intro a
+    exact ⟨Walk.nil' a⟩
+  · rintro v w ⟨a⟩
+    exact ⟨a.reverse⟩
+  · rintro v w x ⟨a⟩ ⟨b⟩
+    exact ⟨a.append b⟩
 
--- A graph is "preconnected" if `G.reachable v w` is true for any `v w : V`.
+-- A graph is "preconnected" if `G.Reachable v w` is true for any `v w : V`.
 -- Note that this includes the empty graph with `V` empty, for silly logic reasons.
 example : G.Preconnected ↔ ∀ v w : V, G.Reachable v w :=
   Iff.rfl
@@ -184,4 +195,3 @@ example : G.Preconnected ↔ ∀ v w : V, G.Reachable v w :=
 -- A graph is connected iff it's preconnected and nonempty.
 example : G.Connected ↔ G.Preconnected ∧ Nonempty V :=
   connected_iff G
-

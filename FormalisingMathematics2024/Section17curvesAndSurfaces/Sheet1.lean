@@ -3,10 +3,9 @@ Copyright (c) 2023 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
-import Mathlib.Tactic.Default
-import Analysis.Calculus.ParametricIntegral
-import Analysis.Calculus.ContDiff
-import Analysis.SpecialFunctions.Trigonometric.Deriv
+import Mathlib.Tactic
+import Mathlib.Analysis.Calculus.ParametricIntegral
+import Mathlib.Analysis.Calculus.ContDiff.Defs
 
 
 /-
@@ -63,41 +62,20 @@ end DifferentiabilityInGeneral
 -- way we say `ℝⁿ` in mathlib) or ...
 open Real
 
--- because there is `real.cos` and `complex.cos`, 
+-- because there is `real.cos` and `complex.cos`,
 -- This says "the cos(sin(x))*exp(x) is differentiable"
-example : Differentiable ℝ fun x => cos (sin x) * exp x :=
-  by
-  apply Differentiable.mul
-  · -- ⊢ differentiable ℝ (λ (y : ℝ), cos (sin y))
-    apply Differentiable.comp
-    · exact differentiable_cos
-    · exact differentiable_sin
-  · exact differentiable_exp
+-- Hint: the theorems are called theorems like `differentiable.mul` etc.
+-- Try proving it by hand.
+example : Differentiable ℝ fun x => cos (sin x) * exp x := by sorry
 
--- Alternative approach:
-example : Differentiable ℝ fun x => cos (sin x) * exp x := by simp
+-- Now see what `hint` has to say!
+example : Differentiable ℝ fun x => cos (sin x) * exp x := by sorry
 
--- I am a bit freaked out that this works.
--- I am less freaked out about this though.
+-- The simplifier used to be able to do this
 example (x : ℝ) :
-    deriv (fun x => cos (sin x) * exp x) x = (cos (sin x) - sin (sin x) * cos x) * exp x := by simp;
-  ring
+    deriv (fun x => cos (sin x) * exp x) x = (cos (sin x) - sin (sin x) * cos x) * exp x :=
+  sorry
 
+--by { simp, ring }
 -- Try this one:
-example (a : ℝ) (x : ℝ) : DifferentiableAt ℝ (fun y : ℝ => exp (-(a * y ^ 2))) x :=
-  by
-  apply DifferentiableAt.comp
-  · apply DifferentiableAt.exp
-    apply differentiableAt_id'
-  · apply DifferentiableAt.neg
-    apply DifferentiableAt.mul
-    · apply differentiableAt_const
-    · apply DifferentiableAt.pow
-      apply differentiableAt_id'
-
-example (a : ℝ) (x : ℝ) : DifferentiableAt ℝ (fun y : ℝ => exp (-(a * y ^ 2))) x :=
-  differentiableAt_id'.exp.comp x <|
-    DifferentiableAt.neg <| (differentiableAt_const a).mul <| differentiableAt_id'.pow 2
-
-example (a : ℝ) (x : ℝ) : DifferentiableAt ℝ (fun y : ℝ => exp (-(a * y ^ 2))) x := by simp
-
+example (a : ℝ) (x : ℝ) : DifferentiableAt ℝ (fun y : ℝ => exp (-(a * y ^ 2))) x := by sorry

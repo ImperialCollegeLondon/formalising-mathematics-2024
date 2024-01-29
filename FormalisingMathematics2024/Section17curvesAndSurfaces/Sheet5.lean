@@ -3,20 +3,9 @@ Copyright (c) 2023 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
-import Mathlib.Tactic.Default
-import MeasureTheory.Function.LpSpace
-
-
--- theory of ℓᵖ spaces
--- theory of ℓᵖ spaces
-/-
-
-# Lᵖ spaces
-
-The set-up : `X` is a type equipped with a (sigma algebra and a) measure.
-
-The space ℒp X
--/
+import Mathlib.Tactic
+import Mathlib.MeasureTheory.Function.LpSpace
+-- theory of ℒᵖ spaces
 /-
 
 # Lᵖ spaces
@@ -30,7 +19,7 @@ open MeasureTheory
 variable (X : Type) [MeasurableSpace X] (μ : Measure X)
 
 -- Instead of functions from X to ℝ, Lean is happy to work with functions from X to
--- some arbitrary `normed_add_comm_group`
+-- some arbitrary `NormedAddCommGroup`
 variable (F : Type) [NormedAddCommGroup F]
 
 -- Functions from X to F have an Lᵖ seminorm defined on them, if `p : ℝ≥0∞`
@@ -46,7 +35,7 @@ noncomputable example : ℝ≥0∞ :=
 example : Prop :=
   Memℒp f p μ
 
--- The reason it's called `snorm` not `norm`, is because we didn't yet quotient out by 
+-- The reason it's called `snorm` not `norm`, is because we didn't yet quotient out by
 -- the things whose integral is zero. This quotient is called `Lp`
 example : Type :=
   Lp F p μ
@@ -55,5 +44,4 @@ example : AddCommGroup (Lp F p μ) := by infer_instance
 
 -- sum of two p-integrable functions is p-integrable
 -- If 1 ≤ p then it's a normed group
-noncomputable example [Fact (1 ≤ p)] : NormedAddCommGroup (Lp F p μ) := by infer_instance
-
+noncomputable example [Fact (1 ≤ p)] : NormedAddCommGroup (Lp F p μ) := by sorry
