@@ -3,8 +3,9 @@ Copyright (c) 2023 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
-import Mathlib.Tactic.Default
-import Order.Filter.Basic
+import Mathlib.Tactic
+-- imports all the Lean tactics
+import Mathlib.Order.Filter.Basic
 
 
 /-!
@@ -20,20 +21,16 @@ I claim that the big subsets are a filter. Check this. The mathematical idea
 is that the "big subsets" are the neighbourhoods of `∞`, so the corresponding
 filter is some representation of an infinitesimal neighbourhood of `∞`.
 
-Implementation notes: `linear_order L` is the type of linear orders on `L`.
+Implementation notes: `LinearOrder L` is the type of linear orders on `L`.
 `e : L` is just an easy way of saying that `L` is nonempty.
 
-Recall that `max x y` is the max of x and y in a `linear_order`, and
-`le_max_left a b : a ≤ max a b` and similarly `le_max_right`. 
+Recall that `max x y` is the max of x and y in a `LinearOrder`, and
+`le_max_left a b : a ≤ max a b` and similarly `le_max_right`.
 -/
 
-
--- imports all the Lean tactics
--- imports all the Lean tactics
 open Set
 
-def atTop (L : Type) [LinearOrder L] (e : L) : Filter L
-    where
+def atTop (L : Type) [LinearOrder L] (e : L) : Filter L where
   sets := {X : Set L | ∃ x : L, ∀ y, x ≤ y → y ∈ X}
   univ_sets := by
     use e
@@ -58,7 +55,7 @@ def atTop (L : Type) [LinearOrder L] (e : L) : Filter L
     · exact hY _ (le_trans (le_max_right _ _) hz)
 
 /-
- 
+
 ## the cofinite filter
 
 The _cofinite filter_ on a type `α` has as its sets the subsets `S : set α`
@@ -68,11 +65,11 @@ Let's show that these are a filter.
 Things you might find helpful:
 
 `compl_univ : univᶜ = ∅`
-`finite_empty : finite ∅`
+`finite_empty : Finite ∅`
 `compl_subset_compl : Xᶜ ⊆ Yᶜ ↔ Y ⊆ X`
-`finite.subset : S.finite → ∀ {T : set α}, T ⊆ S → T.finite`
+`Finite.subset : S.finite → ∀ {T : set α}, T ⊆ S → T.Finite`
 `compl_inter S T : (S ∩ T)ᶜ = Sᶜ ∪ Tᶜ`
-`finite.union : S.finite → T.finite → (S ∪ T).finite`
+`Finite.union : S.finite → T.finite → (S ∪ T).Finite`
 
 NB if you are thinking "I could never use Lean by myself, I don't know
 the names of all the lemmas so I have to rely on Kevin telling them all to
@@ -81,23 +78,22 @@ of all the lemmas either -- I am literally just guessing them and pressing
 ctrl-space to check. Look at the names of the lemmas and begin to understand
 that you can probably guess them yourself.
 -/
-def cofinite (α : Type) : Filter α
-    where
+def cofinite (α : Type) : Filter α where
   sets := {S : Set α | Sᶜ.Finite}
   univ_sets := by
-    rw [mem_set_of_eq]
+    rw [mem_setOf_eq]
     rw [compl_univ]
     exact finite_empty
   sets_of_superset := by
     intro S T hS hST
-    rw [mem_set_of_eq] at hS ⊢
-    rw [← compl_subset_compl] at hST 
-    exact finite.subset hS hST
+    rw [mem_setOf_eq] at hS ⊢
+    rw [← compl_subset_compl] at hST
+    exact Finite.subset hS hST
   inter_sets := by
     intro S T hS hT
-    rw [mem_set_of_eq] at *
+    rw [mem_setOf_eq] at *
     rw [compl_inter]
-    exact finite.union hS hT
+    exact Finite.union hS hT
 
 /-
 
@@ -106,8 +102,8 @@ def cofinite (α : Type) : Filter α
 If you like this filter stuff, then formalise in Lean and prove the following:
 
 (1) prove that the cofinite filter on a finite type is the entire power set filter (`⊥`).
-(2) prove that the cofinite filter on `ℕ` is equal to the `at_top` filter.
-(3) Prove that the cofinite filter on `ℤ` is not equal to the `at_top` filter.
+(2) prove that the cofinite filter on `ℕ` is equal to the `atTop` filter.
+(3) Prove that the cofinite filter on `ℤ` is not equal to the `atTop` filter.
 (4) Prove that the cofinite filter on `ℕ` is not principal.
 
 -/

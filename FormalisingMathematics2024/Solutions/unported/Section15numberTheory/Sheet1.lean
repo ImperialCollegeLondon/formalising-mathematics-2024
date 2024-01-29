@@ -3,7 +3,7 @@ Copyright (c) 2023 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
-import Mathlib.Tactic.Default
+import Mathlib.Tactic
 
 
 /-
@@ -16,30 +16,14 @@ taken from Sierpinski's old book "250 elementary problems in number theory".
 
 ## Switching between naturals and integers
 
-Sometimes when doing number theory in Lean you find yourself having to switch 
+Sometimes when doing number theory in Lean you find yourself having to switch
 between naturals, integers and rationals. For example, if you want to do `a ^ n`
 with `a` an integer, then `n` had better be a natural number, because in general
 you can't raise an integer to the power of an integer. However subtraction is
 "broken" on naturals:
 
 -/
-/-
 
-# Basic Number Theory
-
-Lean has enough machinery to make number theory a feasible topic for
-a final project. In this section I will work through a bunch of examples,
-taken from Sierpinski's old book "250 elementary problems in number theory".
-
-## Switching between naturals and integers
-
-Sometimes when doing number theory in Lean you find yourself having to switch 
-between naturals, integers and rationals. For example, if you want to do `a ^ n`
-with `a` an integer, then `n` had better be a natural number, because in general
-you can't raise an integer to the power of an integer. However subtraction is
-"broken" on naturals:
-
--/
 example : (2 : ℕ) - 3 = 0 :=
   rfl
 
@@ -65,7 +49,7 @@ example (n : ℕ) : ℤ :=
 example (n : ℕ) (z : ℤ) : ℚ :=
   n + z
 
--- gets translated to ↑n + ↑z where the two ↑s 
+-- gets translated to ↑n + ↑z where the two ↑s
 -- represent different functions (ℕ → ℚ and ℤ → ℚ)
 /-
 
@@ -79,7 +63,7 @@ example (a b : ℕ) (h : a + b = 37) : (a : ℤ) + b = 37 :=
     a b : ℕ
     h : a + b = 37
     ⊢ ↑a + ↑b = 37
-    
+
     exact `h` fails, because of the coercions (the goal is about the integer 37,
     not the natural 37)
     -/
@@ -113,7 +97,7 @@ example (a b : ℕ) : ((a + b : ℕ) : ℤ) ^ 2 = a ^ 2 + 2 * a * b + b ^ 2 :=
   -- ⊢ (↑a + ↑b) ^ 2 = ↑a ^ 2 + 2 * ↑a * ↑b + ↑b ^ 2
   ring
 
--- works fine, with variables ↑a and ↑b.  
+-- works fine, with variables ↑a and ↑b.
 /-
 
 These `cast` tactics do not quite solve all your problems, however.
@@ -150,4 +134,3 @@ example (n : ℕ) (hn : 0 < n) : n + 1 ∣ n ^ 2 + 1 ↔ n = 1 :=
     linarith
   · rintro rfl
     norm_num
-
