@@ -36,7 +36,7 @@ theorem lemma1 (x : ℤ) : x - 3 ∣ x ^ 3 - 3 ↔ x - 3 ∣ 24 := by
     convert h2
     ring
   · intro h1
-    convert dvd_add h h1
+    convert dvd_add h h1 using 1
     ring
 
 

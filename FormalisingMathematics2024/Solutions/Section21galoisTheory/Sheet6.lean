@@ -3,7 +3,7 @@ Copyright (c) 2023 Kevin Buzzard. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Author : Kevin Buzzard
 -/
-import FieldTheory.AbelRuffini
+import Mathlib.FieldTheory.AbelRuffini
 
 
 /-
@@ -12,7 +12,7 @@ import FieldTheory.AbelRuffini
 
 There exist polynomials whose solutions cannot be expressed by radicals.
 
-Let `E` be a field and assume `p : E[X]` is a polynomial 
+Let `E` be a field and assume `p : E[X]` is a polynomial
 -/
 /-
 
@@ -20,7 +20,7 @@ Let `E` be a field and assume `p : E[X]` is a polynomial
 
 There exist polynomials whose solutions cannot be expressed by radicals.
 
-Let `E` be a field and assume `p : E[X]` is a polynomial 
+Let `E` be a field and assume `p : E[X]` is a polynomial
 -/
 open scoped Polynomial
 
@@ -32,7 +32,7 @@ open Polynomial
 example : p.Gal = (SplittingField p ≃ₐ[E] SplittingField p) :=
   rfl
 
-/- 
+/-
 If F/E is any field extension at all, then `solvable_by_rad E F` is the intermediate field consisting
 of elements which can be built using n'th roots and the field operations, starting from `E`. Here
 is the rather beautiful definition of the underlying set of this intermediate field:
@@ -46,7 +46,7 @@ inductive is_solvable_by_rad : E → Prop
 | mul (α β : E) : is_solvable_by_rad α → is_solvable_by_rad β → is_solvable_by_rad (α * β)
 | inv (α : E) : is_solvable_by_rad α → is_solvable_by_rad α⁻¹
 | rad (α : E) (n : ℕ) (hn : n ≠ 0) : is_solvable_by_rad (α^n) → is_solvable_by_rad α
-``` 
+```
 
 -/
 variable (F : Type) [Field F] [Algebra E F]
@@ -67,4 +67,4 @@ example (X : Type) (hX : 5 ≤ Cardinal.mk X) : ¬IsSolvable (Equiv.Perm X) :=
 example : ∃ x : ℂ, IsAlgebraic ℚ x ∧ ¬IsSolvableByRad ℚ x :=
   sorry
 
--- See the file `archive.100-theorems-list.16_abel_ruffini`. 
+-- See the file `archive.100-theorems-list.16_abel_ruffini`.

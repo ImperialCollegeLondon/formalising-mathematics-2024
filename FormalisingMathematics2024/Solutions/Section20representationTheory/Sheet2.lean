@@ -6,7 +6,7 @@ Author : Kevin Buzzard
 import Mathlib.RepresentationTheory.Basic
 
 
-namespace Section20sheet2
+namespace Section20Sheet2Solutions
 
 /-
 
@@ -105,3 +105,5 @@ theorem comp_assoc
   rfl
 
 end RepMap
+
+end Section20Sheet2Solutions

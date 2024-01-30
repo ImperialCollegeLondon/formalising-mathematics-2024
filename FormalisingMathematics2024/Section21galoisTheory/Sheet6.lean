@@ -5,7 +5,6 @@ Author : Kevin Buzzard
 -/
 import Mathlib.FieldTheory.AbelRuffini
 
-
 /-
 
 ## Insolvability of the quintic
