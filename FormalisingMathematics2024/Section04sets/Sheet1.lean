@@ -58,6 +58,9 @@ theorem subset_def : A ⊆ B ↔ ∀ x, x ∈ A → x ∈ B := by
   -- ↔ is reflexive so `rfl` works because LHS is defined to be equal to RHS
   rfl
 
+-- Say `x` is an arbitrary element of `X`.
+variable (x : X)
+
 theorem mem_union_iff : x ∈ A ∪ B ↔ x ∈ A ∨ x ∈ B := by
   rfl
 

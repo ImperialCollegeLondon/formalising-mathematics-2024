@@ -54,6 +54,9 @@ All of these things are true *by definition* in Lean. Let's
 check this.
 
 -/
+-- say `x` is an arbitrary element of `X`.
+variable (x : X)
+
 theorem subset_def : A ⊆ B ↔ ∀ x, x ∈ A → x ∈ B := by
   -- ↔ is reflexive so `rfl` works because LHS is defined to be equal to RHS
   rfl
