@@ -23,7 +23,7 @@ partial orders.
 ## Partial orders
 
 A *partial order* (or a partially ordered type) is a type `X` equipped with
-a concept of `≤` satisying some axioms. More precisely `X` is equipped
+a concept of `≤` satisfying some axioms. More precisely `X` is equipped
 with a true-false statement `a ≤ b` for each `a b : X`, satisfying
 the following axioms:
 
