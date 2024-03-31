@@ -12,7 +12,7 @@ Then it's just a matter of installing this repository onto your computer. There 
 
 ### Local installation via point-and-click
 
-The most painless way to install the repository is using VS Code directly. With Lean installed, click on the upside-down A
+The most painless way to install the repository is using VS Code directly. With Lean installed, open any file on your system in VS Code, and then click on the upside-down A
 
 ![an upside-down A](png/clone_forall.png?raw=true "an upside-down A")
 
