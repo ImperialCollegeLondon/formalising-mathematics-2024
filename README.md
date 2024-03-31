@@ -1,6 +1,6 @@
 # Formalising Mathematics
 
-This is the repository for Kevin Buzzard's 2024 course on formalising mathematics in the Lean theorem prover. The course runs from January to March 2024. 
+This is the repository for Kevin Buzzard's 2024 course on formalising mathematics in the Lean theorem prover. The course ran from January to March 2024. 
 
 Note: this course is written in Lean 4. Previous versions of this course were written in the (now end-of-life) Lean 3.
 
