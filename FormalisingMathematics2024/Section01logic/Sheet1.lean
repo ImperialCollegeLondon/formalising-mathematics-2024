@@ -119,7 +119,10 @@ using `intro`, `exact` and `apply`.
 -/
 /-- Every proposition implies itself. -/
 example : P → P := by
-  sorry
+  -- intro assumption: `h` says `P`.
+  intro h
+  -- by reflexivity
+  exact h
   done
 
 /-
@@ -138,25 +141,44 @@ So the next level is asking you prove that `P → (Q → P)`.
 
 -/
 example : P → Q → P := by
-  sorry
+  -- intro assumption for `P`
+  intro hP
+  -- intro inner assumption for `Q`, but unused variable
+  intro _hQ
+  -- target: `P` is now satisfied
+  exact hP
   done
 
 /-- If we know `P`, and we also know `P → Q`, we can deduce `Q`.
 This is called "Modus Ponens" by logicians. -/
 example : P → (P → Q) → Q := by
-  sorry
+  intro h
+  intro hPQ
+  apply hPQ at h
+  exact h
   done
 
 /-- `→` is transitive. That is, if `P → Q` and `Q → R` are true, then
   so is `P → R`. -/
 example : (P → Q) → (Q → R) → P → R := by
-  sorry
+  intro h1
+  intro h2
+  intro h
+  apply h1 at h
+  apply h2 at h
+  exact h
   done
 
 -- If `h : P → Q → R` with goal `⊢ R` and you `apply h`, you'll get
 -- two goals! Note that tactics operate on only the first goal.
 example : (P → Q → R) → (P → Q) → P → R := by
-  sorry
+  intro h1
+  intro h2
+  intro h
+  apply h1
+  exact h
+  apply h2 at h
+  exact h
   done
 
 /-
@@ -171,27 +193,65 @@ in this section, where you'll learn some more tactics.
 variable (S T : Prop)
 
 example : (P → R) → (S → Q) → (R → T) → (Q → R) → S → T := by
-  sorry
+  intro _hPR
+  intro hSQ
+  intro hRT
+  intro hQR
+  intro hS
+  -- to prove: T
+  apply hRT
+  apply hSQ at hS
+  apply hQR at hS
+  exact hS
   done
 
 example : (P → Q) → ((P → Q) → P) → Q := by
-  sorry
+  intro hPQ
+  intro hInner
+  apply hPQ
+  apply hInner at hPQ
+  exact hPQ
   done
 
 example : ((P → Q) → R) → ((Q → R) → P) → ((R → P) → Q) → P := by
-  sorry
+  intro h1
+  intro h2
+  intro _h3
+  apply h2
+  intro hQ
+  apply h1
+  intro _hP
+  exact hQ
   done
 
 example : ((Q → P) → P) → (Q → R) → (R → P) → P := by
-  sorry
+  intro h1
+  intro h2
+  intro h3
+  apply h1
+  intro hQ
+  apply h2 at hQ
+  apply h3 at hQ
+  exact hQ
   done
 
 example : (((P → Q) → Q) → Q) → P → Q := by
-  sorry
+  intro h1
+  intro h2
+  apply h1
+  intro h3
+  apply h3 at h2
+  exact h2
   done
 
 example :
     (((P → Q → Q) → (P → Q) → Q) → R) →
       ((((P → P) → Q) → P → P → Q) → R) → (((P → P → Q) → (P → P) → Q) → R) → R := by
-  sorry
+  intro _h1 h2 _h3
+  apply h2
+  intro h4 _h5
+  intro _h6
+  apply h4
+  intro h7
+  apply h7
   done
