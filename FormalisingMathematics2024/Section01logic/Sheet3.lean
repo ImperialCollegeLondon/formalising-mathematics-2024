@@ -33,45 +33,91 @@ and the following tactics may also be useful:
 variable (P Q R : Prop)
 
 example : ¬True → False := by
-  sorry
+  intro h
+  change True → False at h
+  apply h
+  triv
   done
 
 example : False → ¬True := by
-  sorry
+  intro h
+  change True -> False
+  exfalso
+  exact h
   done
 
 example : ¬False → True := by
-  sorry
+  intro _h
+  triv
   done
 
 example : True → ¬False := by
-  sorry
+  intro _h
+  change False → False
+  exfalso
   done
 
 example : False → ¬P := by
-  sorry
+  exfalso
   done
 
 example : P → ¬P → False := by
-  sorry
+  intro hP -- assume P
+  intro hnP
+  apply hnP
+  exact hP
   done
 
 example : P → ¬¬P := by
-  sorry
+  intro hP
+  change ¬P→False
+  intro hnP
+  change P→False at hnP
+  apply hnP at hP
+  exact hP
+  done
+
+-- another implementation using `by_contra`
+example : P → ¬¬P := by
+  intro hP
+  by_contra hnP
+  change P→False at hnP
+  apply hnP at hP
+  exact hP
   done
 
 example : (P → Q) → ¬Q → ¬P := by
-  sorry
+  intro hPQ
+  intro hnQ
+  by_contra hP
+  change Q→False at hnQ
+  apply hPQ at hP
+  apply hnQ at hP
+  exact hP
   done
 
 example : ¬¬False → False := by
-  sorry
+  intro h
+  by_contra h1
+  change ¬False→False at h
+  apply h at h1
+  exact h1
   done
 
 example : ¬¬P → P := by
-  sorry
+  intro h
+  by_contra h1
+  change ¬P→False at h
+  apply h at h1
+  exact h1
   done
 
 example : (¬Q → ¬P) → P → Q := by
-  sorry
+  intro h
+  intro h1
+  by_contra h2
+  apply h at h2
+  change P→False at h2
+  apply h2 at h1
+  exact h1
   done
