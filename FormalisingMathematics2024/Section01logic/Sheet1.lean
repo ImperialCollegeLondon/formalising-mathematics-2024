@@ -50,7 +50,7 @@ first logic section is to get you up to speed with ten very basic ones.
 ## Worked examples
 
 Click around in the proofs to see the tactic state (on the right) change.
-The tactic is implemented and the state changes just before the comma.
+The tactic is implemented and the state changes just before the newline or semicolon (`;`).
 I will use the following conventions: variables with capital
 letters like `P`, `Q`, `R` denote propositions
 (i.e. true/false statements) and variables whose names begin
@@ -113,8 +113,8 @@ example (h : P → Q) (hP : P) : Q :=
 
 ## Examples for you to try
 
-Delete the `sorry`s and replace them with comma-separated tactic proofs
-using `intro`, `exact` and `apply`.
+Delete the `sorry`s and replace them with tactic proofs using `intro`,
+`exact` and `apply`, separating them with newlines or semicolons (`;`).
 
 -/
 /-- Every proposition implies itself. -/
