@@ -7,9 +7,9 @@ import Mathlib.Tactic -- imports all the Lean tactics
 
 /-!
 
-# Logic in Lean, example sheet 2 : `true` and `false`
+# Logic in Lean, example sheet 2 : `True` and `False`
 
-We learn about the `true` and `false` propositions.
+We learn about the `True` and `False` propositions.
 
 ## Tactics you will need
 
