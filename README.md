@@ -50,7 +50,7 @@ Just click here: [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)
 
 ### Method 2: via Codespaces
 
-Just click here: [![Open in Gitpod](https://github.com/codespaces/badge.svg)](https://codespaces.new/ImperialCollegeLondon/formalising-mathematics-2024)
+Just click here: [![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/ImperialCollegeLondon/formalising-mathematics-2024)
 
 ## Course notes
 
