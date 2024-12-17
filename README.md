@@ -48,16 +48,9 @@ If you don't have the 4.5 gigabytes necessary to install all this, or if your co
 
 Just click here: [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/ImperialCollegeLondon/formalising-mathematics-2024)
 
-
-
 ### Method 2: via Codespaces
 
-Go to the project's [home page on GitHub](https://github.com/ImperialCollegeLondon/formalising-mathematics-2024),
-click "Code" and then "Codespaces" so it looks like this:
-
-Pic: ![codespaces installation](png/codespaces.png?raw=true "codespaces installation")
-
-Then click on the `+` ("create codespace on main"), and then wait for a few minutes. When it looks like everything has downloaded, open up the `FormalisingMathematics2024` directory (not the file!) and you should see the directories where the exercises are.
+Just click here: [![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/ImperialCollegeLondon/formalising-mathematics-2024)
 
 ## Course notes
 
