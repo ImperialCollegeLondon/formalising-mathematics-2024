@@ -42,7 +42,7 @@ Now open the folder `formalising-mathematics-2024` which you just created, using
 directories! One has hyphens, the other does not).
 ## Online play
 
-If you don't have the 4.5 gigabytes necessary to install all this, or if your computer is too slow to make the experience of using Lean on it fun (you'll need at least 8 gigs of ram, for example), then you can do the course exercises through a web browser (and you don't need to install anything onto your computer using this method).
+If you don't have the 4.5 gigabytes necessary to install all this, or if your computer is too slow to make the experience of using Lean on it fun (you'll need at least 8 gigs of ram, for example, and ideally 16), then you can do the course exercises through a web browser (and you don't need to install anything onto your computer using this method).
 
 ### Method 1: via Gitpod.
 
