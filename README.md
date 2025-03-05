@@ -33,7 +33,7 @@ and navigate to the `FormalisingMathematics2024` directory, where you should fin
 An older way is via the command line. Fire up the same command line which you used to install Lean 4 and type this:
 
 ```bash
-git clone git@github.com:ImperialCollegeLondon/formalising-mathematics-2024.git
+git clone https://github.com/ImperialCollegeLondon/formalising-mathematics-2024.git
 cd formalising-mathematics-2024
 lake exe cache get
 ```
