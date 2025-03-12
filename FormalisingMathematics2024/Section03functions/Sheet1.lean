@@ -71,9 +71,9 @@ theorem comp_eval (f : X → Y) (g : Y → Z) (x : X) : (g ∘ f) x = g (f x) :=
 -- Why did we just prove all those theorems with a proof
 -- saying "it's true by definition"? Because now, if we want,
 -- we can `rw` the theorems to replace things by their definitions.
-example : Injective (id : X → X) :=
-  by-- you can start with `rw injective_def` if you like,
-  -- and later you can `rw id_eval`, although remember that `rw` doesn't
+example : Injective (id : X → X) := by
+  -- you can start with `rw [injective_def]` if you like,
+  -- and later you can `rw [id_eval]`, although remember that `rw` doesn't
   -- work under binders like `∀`, so use `intro` first.
   sorry
 
