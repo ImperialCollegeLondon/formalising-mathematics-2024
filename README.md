@@ -1,3 +1,7 @@
+# IMPORTANT
+
+These are course notes for a course given in 2024; the more up-to-date 2025 version of the course repository is [here](https://github.com/b-mehta/formalising-mathematics-notes) and the more up-to-date version of the course notes are [here](https://b-mehta.github.io/formalising-mathematics-notes/). 
+
 # Formalising Mathematics
 
 This is the repository for Kevin Buzzard's 2024 course on formalising mathematics in the Lean theorem prover. The course ran from January to March 2024. 
